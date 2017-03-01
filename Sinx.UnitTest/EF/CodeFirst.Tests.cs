@@ -34,7 +34,7 @@ namespace Sinx.UnitTest.EF
 					}
 				}
 			}; 
-			_dbContext.Blogs.Add(blog); 
+			_dbContext.Blogs.Add(blog);  
 			_dbContext.SaveChanges();
 		}
 	}
@@ -45,11 +45,8 @@ namespace Sinx.UnitTest.EF
 			: base("Data Source=10.1.1.2;Initial Catalog=TestDb;User Id=zxxktest ;Password=123456")
 		{
 		}
-		// EF O/R 映射过程中发现 O 的过程
-		//		1. 通过在DbContext派生类中寻找 DbSet<Blog> 发现
-		//		2. 通过导航属性发现
+		// EF O/R 映射过程中发现 O 的过程: 通过调用DbContext中的DbSet Blogs发现Blog, 然后顺着Blog的导航发现Post
 		public DbSet<Blog> Blogs { get; set; }
-		public DbSet<Post> Posts { get; set; }
 	}
 
 	public class Blog
