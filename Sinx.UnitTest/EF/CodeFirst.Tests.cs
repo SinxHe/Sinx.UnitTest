@@ -12,11 +12,7 @@ namespace Sinx.UnitTest.EF
 {
 	public class CodeFirstTests
 	{
-		private readonly BlogDbContext _dbContext = new BlogDbContext();
-		public CodeFirstTests()
-		{
-
-		}
+		private readonly BlogContext _dbContext = new BlogContext();
 
 		[Fact]
 		public void CreateDb_ValidRelation_Success()
@@ -37,39 +33,38 @@ namespace Sinx.UnitTest.EF
 			_dbContext.Blogs.Add(blog);  
 			_dbContext.SaveChanges();
 		}
-	}
-
-	public class BlogDbContext : DbContext
-	{
-		public BlogDbContext()
-			: base("Data Source=10.1.1.2;Initial Catalog=TestDb;User Id=zxxktest ;Password=123456")
+		public class BlogContext : DbContext
 		{
+			public BlogContext()
+				: base("Data Source=10.1.1.2;Initial Catalog=TestDb;User Id=zxxktest ;Password=123456")
+			{
+			}
+			// EF O/R 映射过程中发现 O 的过程: 通过调用DbContext中的DbSet Blogs发现Blog, 然后顺着Blog的导航发现Post
+			public DbSet<Blog> Blogs { get; set; }
 		}
-		// EF O/R 映射过程中发现 O 的过程: 通过调用DbContext中的DbSet Blogs发现Blog, 然后顺着Blog的导航发现Post
-		public DbSet<Blog> Blogs { get; set; }
-	}
 
-	public class Blog
-	{
-		[Key]
-		public int BlogId { get; set; }
-		public string Url { get; } = "fdjklsafjdskla";	// NOTICE: 只包含Get没有Set的属性默认是不保存到数据库中的
-		public int Rating { get; set; }
-		
-		[InverseProperty(nameof(Post.Blog))]	// 导航配对
-		public List<Post> Posts { get; set; }   // 引用导航
-	}
+		public class Blog
+		{
+			[Key]
+			public int BlogId { get; set; }
+			public string Url { get; } = "fdjklsafjdskla";  // NOTICE: 只包含Get没有Set的属性默认是不保存到数据库中的
+			public int Rating { get; set; }
 
-	public class Post
-	{
-		[Key]
-		public int PostId { get; set; }
-		public string Title { get; set; }
-		public string Content { get; set; }
+			[InverseProperty(nameof(Post.Blog))]    // 导航配对
+			public List<Post> Posts { get; set; }   // 用Blog的视角 - 引用导航
+		}
 
-		public int BlogId { get; set; }
-		
-		[ForeignKey(nameof(BlogId))]	// 指定对应的外键 key
-		public Blog Blog { get; set; }	// 反向导航
+		public class Post
+		{
+			[Key]
+			public int PostId { get; set; }
+			public string Title { get; set; }
+			public string Content { get; set; }
+
+			public int BlogId { get; set; }
+
+			[ForeignKey(nameof(BlogId))]    // 指定对应的外键 key
+			public Blog Blog { get; set; }  // 用Blog的视角 - 反向导航
+		}
 	}
 }
