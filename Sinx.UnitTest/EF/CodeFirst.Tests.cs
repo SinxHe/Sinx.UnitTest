@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +16,31 @@ namespace Sinx.UnitTest.EF
 	{
 		private readonly BlogContext _dbContext = new BlogContext();
 
+		private const string ConnectionString =
+			"Data Source=10.1.1.2;Initial Catalog=TestDb;User Id=zxxktest ;Password=123456";
 		[Fact]
 		public void CreateDb_ValidRelation_Success()
 		{
+			try
+			{
+				using (IDbConnection conn = new SqlConnection(ConnectionString))
+				{
+					conn.Open();
+					using (var cmd = new SqlCommand(@"
+						DROP TABLE [dbo].[__MigrationHistory];
+						DROP TABLE [dbo].[Posts];
+						DROP TABLE [dbo].[Blogs];
+					", (SqlConnection)conn))
+					{
+						cmd.ExecuteNonQuery();
+					}
+					conn.Close();
+				}
+			}
+			catch (Exception)
+			{
+				// ignore because table not exist
+			}
 			var blog = new Blog
 			{
 				//Url = nameof(Blog.Url),
@@ -36,7 +60,7 @@ namespace Sinx.UnitTest.EF
 		public class BlogContext : DbContext
 		{
 			public BlogContext()
-				: base("Data Source=10.1.1.2;Initial Catalog=TestDb;User Id=zxxktest ;Password=123456")
+				: base(ConnectionString)
 			{
 			}
 			// EF O/R 映射过程中发现 O 的过程: 通过调用DbContext中的DbSet Blogs发现Blog, 然后顺着Blog的导航发现Post
