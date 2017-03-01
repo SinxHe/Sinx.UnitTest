@@ -23,7 +23,7 @@ namespace Sinx.UnitTest.EF
 		{
 			var blog = new Blog
 			{
-				Url = nameof(Blog.Url),
+				//Url = nameof(Blog.Url),
 				Rating = 1,
 				Posts = new List<Post>{
 					new Post
@@ -53,7 +53,7 @@ namespace Sinx.UnitTest.EF
 	{
 		[Key]
 		public int BlogId { get; set; }
-		public string Url { get; set; }
+		public string Url { get; } = "fdjklsafjdskla";	// NOTICE: 只包含Get没有Set的属性默认是不保存到数据库中的
 		public int Rating { get; set; }
 		
 		[InverseProperty(nameof(Post.Blog))]	// 导航配对

@@ -13,7 +13,7 @@ namespace Sinx.UnitTest.EF.Models
 	public class Blog
 	{
 		public int BlogId { get; set; }
-		public string Url { get; set; }
+		public string Url { get; /*set;*/ } // NOTICE: 只包含Get没有Set的属性默认是不保存到数据库中的
 
 		public List<Post> Posts { get; set; }   // 导航属性 - 引用导航[ReferenceNavigation]
 	}
