@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -60,6 +61,17 @@ namespace Sinx.UnitTest.System.Linq.Expressions
 			var compiled = lambda.Compile();
 			Assert.Equal(compiled(left, right), expect);
 			// <<深入理解C#>> P.216
+		}
+
+		[Fact]
+		public void Expression_GetParameter()
+		{
+			Expression<Func<int, string>> toString = num => num.ToString();
+			ReadOnlyCollection<ParameterExpression>  parameters = toString.Parameters;
+			ParameterExpression firstParam = parameters.First();
+			Assert.Equal(firstParam.Name, "num");
+			Assert.Equal(firstParam.NodeType, ExpressionType.Parameter);
+			Assert.Equal(firstParam.Type, typeof(int));
 		}
 	}
 }
