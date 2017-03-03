@@ -85,6 +85,9 @@ namespace Sinx.UnitTest.EF
 					.WithRequired(e => e.Blog)
 					.HasForeignKey(e => e.BlogId)
 					;
+				modelBuilder.Entity<Blog>()
+					.Property(e => e.BlogId)	// 选择配置主键 BlogId
+					.HasColumnName("Id");		// 将主键的数据库名字配置成 Id
 				modelBuilder.Entity<Post>()
 					.HasKey(e => e.PostId)		// 设置主键
 					; 
