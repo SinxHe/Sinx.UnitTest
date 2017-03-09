@@ -12,8 +12,8 @@ namespace Sinx.UnitTest.EF
 	public class EntryTests
 	{
 		private readonly EfDbContext _dbContext = new EfDbContext();
-		private static readonly List<Course> _courses = new List<Course> {new Course {Name = "数学"}, new Course {Name = "语文"}};
-		private readonly Student _studentWithForeign = new Student { Name = "Sinx", Courses = _courses};
+		private static readonly List<Course> Courses = new List<Course> {new Course {Name = "数学"}, new Course {Name = "语文"}};
+		private readonly Student _studentWithForeign = new Student { Name = "Sinx", Courses = Courses};
 		private void ResetDb()
 		{
 			using (var conn = new SqlConnection(ConnectStrings.DefaultConnectionString))
