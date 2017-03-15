@@ -35,7 +35,7 @@ namespace Sinx.UnitTest.EF
 			}
 		}
 
-		public static readonly Func<string, int> GetCount = sql =>
+		private static readonly Func<string, int> GetCount = sql =>
 		{
 			int count;
 			using (var conn = new SqlConnection(ConnectStrings.DefaultConnectionString))
@@ -133,6 +133,24 @@ namespace Sinx.UnitTest.EF
 			_dbContext.SaveChanges();
 			string sql = $"SELECT COUNT(*) FROM {nameof(Student)}";
 			Assert.Equal(0, GetCount(sql));
+		}
+
+		[Fact]
+		public void DeleteEntityNavigation_ModifyEntityDirectory()
+		{
+			ResetDb();
+
+			string sql = $"SELECT COUNT(*) FROM {nameof(Course)}";
+			_dbContext.Students.Add(_studentWithForeign);
+			_dbContext.SaveChanges();
+			int count = GetCount(sql);
+			Assert.NotEqual(0, count);
+
+			//_studentWithForeign.Courses = new List<Course>(); Exception
+			_studentWithForeign.Courses.ToList().ForEach(c => _dbContext.Entry(c).State = EntityState.Deleted);
+			_dbContext.SaveChanges();
+			count = GetCount(sql);
+			Assert.Equal(0, count);
 		}
 	}
 }
