@@ -24,7 +24,7 @@ namespace Sinx.UnitTest.System.Threading
 	{
 		[Theory]
 		[InlineData(0, nameof(ParameterizedThreadStart))]
-		[InlineData(50, "Func<object>")]
+		[InlineData(500, "Func<object>")]
 		public void NewThread(int waittime, string except)
 		{
 			ParameterizedThreadStart func = obj => ((string[])obj)[0] = "Func<object>"; // Func<object>
@@ -37,7 +37,7 @@ namespace Sinx.UnitTest.System.Threading
 			Thread thread1 = new Thread(func);
 			// 传入 非空string
 			thread1.Start(param);
-			Thread.Sleep(waittime);		// 不进行等待, 那么这里的值应该是 nameof(ParameterizedThreadStart)
+			Thread.Sleep(waittime);     // 不进行等待, 那么这里的值应该是 nameof(ParameterizedThreadStart)
 			Assert.Equal(param[0], except);
 		}
 
@@ -112,13 +112,56 @@ namespace Sinx.UnitTest.System.Threading
 		{
 			// 获取当前线程的同步上下文
 			SynchronizationContext context = SynchronizationContext.Current;
-			context.OperationStarted();						// 空方法, 在派生类中重写以响应操作 开始 执行的回调
-			context.OperationCompleted();					// 空方法, 在派生类中重写以响应操作 完成 执行的回调
+			context.OperationStarted();                     // 空方法, 在派生类中重写以响应操作 开始 执行的回调
+			context.OperationCompleted();                   // 空方法, 在派生类中重写以响应操作 完成 执行的回调
 			var b = context.IsWaitNotificationRequired();   // 确定是否等待通知
-			// SendOrPostCallback - Action<object> - 表示在消息即将被调度到同步上下文时要调用的方法。
-			//context.Post((SendOrPostCallback)null, (object)null);	// 在派生类中重写, 将异步消息分派到同步上下文
-			//context.Send((SendOrPostCallback)null, (object)null);
-			//context.Wait((IntPtr[])null, waitAll: true, millisecondsTimeout: 1000);	// 等待数组中的任意元素或所有元素接收信号
+															// SendOrPostCallback - Action<object> - 表示在消息即将被调度到同步上下文时要调用的方法。
+															//context.Post((SendOrPostCallback)null, (object)null);	// 在派生类中重写, 将异步消息分派到同步上下文
+															//context.Send((SendOrPostCallback)null, (object)null);
+															//context.Wait((IntPtr[])null, waitAll: true, millisecondsTimeout: 1000);	// 等待数组中的任意元素或所有元素接收信号
+		}
+
+		[Theory]
+		[InlineData(100, 1)]
+		[InlineData(0, 2)]
+		public void ConExecute_UseLock(int waittime, int expect)
+		{
+			var ar = new[] { 0 };
+			Thread thd1 = new Thread(() =>
+			{
+				Thread.Sleep(waittime);
+				ar[0] = 1;
+			});
+			Thread thd2 = new Thread(() => ar[0] = 2);
+			thd1.Start();
+			thd2.Start();
+			Thread.Sleep(waittime + 500);
+			Assert.Equal(expect, ar[0]);
+
+			var exeAr = new object();
+			thd1 = new Thread(() =>
+			{
+				lock (exeAr)
+				{
+					Thread.Sleep(waittime);
+					ar[0] = 1;
+				}
+			});
+			thd2 = new Thread(() =>
+			{
+				Thread.Sleep(5);
+				lock (exeAr)
+				{
+					ar[0] = 2;
+				}
+			});
+			thd1.Start();
+			thd2.Start();
+			Thread.Sleep(waittime + 500);
+			lock (exeAr)
+			{
+				Assert.Equal(2, ar[0]);
+			}
 		}
 	}
 }
