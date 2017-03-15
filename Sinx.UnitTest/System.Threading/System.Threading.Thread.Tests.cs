@@ -163,5 +163,50 @@ namespace Sinx.UnitTest.System.Threading
 				Assert.Equal(2, ar[0]);
 			}
 		}
+
+		[Fact]
+		public void ConExecute_UseMonitor()
+		{
+			var ar = new[] { 0 };
+			var exeAr = new object();
+			Thread thd1 = new Thread(() =>
+			{
+				Monitor.Enter(exeAr);
+				try
+				{
+					Thread.Sleep(500);
+					ar[0] = 1;
+				}
+				finally		// 其实在 lock 中帮忙做了这个
+				{
+					Monitor.Exit(exeAr);
+				}
+			});
+			Thread thd2 = new Thread(() =>
+			{
+				Monitor.Enter(exeAr);
+				try
+				{
+					ar[0] = 2;
+				}
+				finally     // 其实在 lock 中帮忙做了这个
+				{
+					Monitor.Exit(exeAr);
+				}
+			});
+			thd1.Start();
+			Thread.Sleep(100);
+			thd2.Start();
+			Thread.Sleep(100);	// 恢复线程2的时候要保证当前线程不会锁住exeAr
+			Monitor.Enter(exeAr);
+			try
+			{
+				Assert.Equal(2, ar[0]);
+			}
+			finally     // 其实在 lock 中帮忙做了这个
+			{
+				Monitor.Exit(exeAr);
+			}
+		}
 	}
 }
