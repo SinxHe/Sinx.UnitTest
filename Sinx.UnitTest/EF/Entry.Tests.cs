@@ -152,5 +152,18 @@ namespace Sinx.UnitTest.EF
 			count = GetCount(sql);
 			Assert.Equal(0, count);
 		}
+
+		[Fact]
+		public void UpdateNavigation_StateChange_CanPersistent()
+		{
+			ResetDb();
+			_dbContext.Students.Add(_studentWithForeign);
+			_dbContext.SaveChanges();
+			_studentWithForeign.Courses[0].Name = nameof(UpdateNavigation_StateChange_CanPersistent);
+			_dbContext.SaveChanges();
+			string sql = $"SELECT COUNT(*) FROM {nameof(Course)} WHERE {nameof(Course.Name)} = '{nameof(UpdateNavigation_StateChange_CanPersistent)}'";
+			int count = GetCount(sql);
+			Assert.Equal(1, count);
+		}
 	}
 }
