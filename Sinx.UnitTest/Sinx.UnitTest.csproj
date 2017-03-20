@@ -124,6 +124,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <Compile Include="System.Threading\ExecutionContext.Tests.cs" />
+    <Compile Include="System.Threading\System.Threading.CancellationTokenSource.cs" />
     <Compile Include="System.Threading\System.Threading.Thread.Tests.cs" />
     <Compile Include="System.Threading\System.Threading.ThreadPool.cs" />
   </ItemGroup>
