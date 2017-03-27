@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\Sort\01BubbleTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
     <Compile Include="EF\CodeFirst.FluentApi.Tests.cs" />
     <Compile Include="EF\CodeFirst.Tests.cs" />
