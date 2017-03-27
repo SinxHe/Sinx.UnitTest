@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -28,6 +29,27 @@ namespace Sinx.UnitTest.HBase
 			var res = task.Result;
 			var content = res.Content.ReadAsStringAsync().Result;
 			var model = JsonConvert.DeserializeObject<Table>(content);
+		}
+
+		[Fact]
+		public void Rest_Post_CreateTable()
+		{
+			var tableName = "TableFromSinxUnitTest" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+			var columnFamily = "cf" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+			var request = new HttpRequestMessage(HttpMethod.Post, $"/{tableName}/schema");
+			request.Headers.Add("Accept", "text/xml");
+			request.Content = new StringContent(
+				$"<?xml version=\"1.0\" encoding=\"UTF-8\"?><TableSchema name=\"{tableName}\">" +
+				$"<ColumnSchema name=\"{columnFamily}\" /></TableSchema>");
+			request.Content.Headers.ContentType = new MediaTypeHeaderValue("text/xml");
+			var task = _client.SendAsync(request);
+			var response = task.Result;
+			Assert.Equal(response.StatusCode, HttpStatusCode.Created);
+		}
+
+		[Fact]
+		public void Rest_Post_UpdateTableSchema()
+		{
 		}
 
 		public class Table
