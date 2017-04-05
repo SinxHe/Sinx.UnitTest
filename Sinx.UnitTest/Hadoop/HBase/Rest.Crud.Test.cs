@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace Sinx.UnitTest.HBase
+namespace Sinx.UnitTest.Hadoop.HBase
 {
 	public class Crud
 	{
@@ -24,7 +21,7 @@ namespace Sinx.UnitTest.HBase
 			};
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
-		[Fact]
+		//[Fact]
 		public void Rest_Get()
 		{
 			var task = _client.GetAsync("t1/r1/f1:c1");
@@ -49,8 +46,8 @@ namespace Sinx.UnitTest.HBase
 			Assert.Equal(response.StatusCode, HttpStatusCode.Created);
 		}
 
-		[Theory]
-		[InlineData("t1", "r1", "f1:c1")]
+		//[Theory]
+		//[InlineData("t1", "r1", "f1:c1")]
 		public void Rest_Put_InsertTableRow(string tableName, string row, string column)
 		{
 			var value = _getNowDateTime(); //Convert.ToBase64String(Encoding.UTF8.GetBytes(_getNowDateTime()));

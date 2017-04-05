@@ -49,7 +49,7 @@ namespace Sinx.UnitTest.EF
 			return count;
 		};
 
-		[Fact]
+		//[Fact]
 		public void ChangeProperty_State_Changed()
 		{
 			ResetDb();			
@@ -71,7 +71,7 @@ namespace Sinx.UnitTest.EF
 			Assert.Equal(state, EntityState.Modified);
 		}
 
-		[Fact]
+		//[Fact]
 		public void DeleteEntryWithNavigation_RemoveMethod_Success()
 		{
 			ResetDb();
@@ -106,7 +106,7 @@ namespace Sinx.UnitTest.EF
 			_dbContext.SaveChanges();
 		}
 
-		[Fact]
+		//[Fact]
 		public void DeleteEntryWithNavigation_UseStateFlag_Fail()
 		{
 			ResetDb();
@@ -153,7 +153,7 @@ namespace Sinx.UnitTest.EF
 			Assert.Equal(0, count);
 		}
 
-		[Fact]
+		//[Fact]
 		public void UpdateNavigation_StateChange_CanPersistent()
 		{
 			ResetDb();
