@@ -144,6 +144,7 @@
     <Compile Include="Algorithm\Sort\01BubbleTest.cs" />
     <Compile Include="Algorithm\Sort\02SelectTest.cs" />
     <Compile Include="Algorithm\Sort\03InsertTest.cs" />
+    <Compile Include="Algorithm\Sort\04MergeTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
     <Compile Include="EF\CodeFirst.FluentApi.Tests.cs" />
     <Compile Include="EF\CodeFirst.Tests.cs" />
