@@ -162,6 +162,7 @@
     <Compile Include="System.Linq.Expressions\BinaryExpression.Tests.cs" />
     <Compile Include="System.Linq.Expressions\Expression.Tests.cs" />
     <Compile Include="System.Linq\Enumerable.Tests.cs" />
+    <Compile Include="System.Threading\01 线程通信和同步\System.Threading.Abort.cs" />
     <Compile Include="Thrift\Thrift.Test.cs" />
     <Compile Include="Thrift\thrift4flume\gen-csharp\Status.cs" />
     <Compile Include="Thrift\thrift4flume\gen-csharp\ThriftFlumeEvent.cs" />
