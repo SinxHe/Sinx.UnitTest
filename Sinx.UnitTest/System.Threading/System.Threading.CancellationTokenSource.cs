@@ -24,7 +24,7 @@ namespace Sinx.UnitTest.System.Threading
 					break;
 				}
 			});
-			Thread.Sleep(100);	// 等待一会, 保证上面的continue代码也能执行
+			Thread.Sleep(TimeSpan.FromMilliseconds(100));	// 等待一会, 保证上面的continue代码也能执行
 			cts.Cancel();
 			are.WaitOne();	// 如果没有取消成功的话, 这里会一直等下去
 		}
