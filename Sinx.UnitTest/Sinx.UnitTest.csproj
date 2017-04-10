@@ -174,6 +174,7 @@
     <Compile Include="System.Threading\System.Threading.CancellationTokenSource.cs" />
     <Compile Include="System.Threading\System.Threading.Thread.Tests.cs" />
     <Compile Include="System.Threading\System.Threading.ThreadPool.cs" />
+    <Compile Include="System.Threading\01 线程通信和同步\System.Threading.Join.cs" />
     <None Include="Thrift\thrift4flume\aslv2" />
     <None Include="Thrift\thrift4flume\flume.thrift" />
     <None Include="Thrift\thrift4flume\gen-csharp\ReadMe.md" />
