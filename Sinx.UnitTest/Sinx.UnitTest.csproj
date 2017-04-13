@@ -162,10 +162,12 @@
     <Compile Include="System.Linq.Expressions\BinaryExpression.Tests.cs" />
     <Compile Include="System.Linq.Expressions\Expression.Tests.cs" />
     <Compile Include="System.Linq\Enumerable.Tests.cs" />
-    <Compile Include="System.Threading\01 线程通信和同步\System.Threading.Abort.cs" />
-    <Compile Include="System.Threading\01 线程通信和同步\System.Threading.ThreadState.cs" />
-    <Compile Include="System.Threading\01 线程通信和同步\给线程传递参数.cs" />
+    <Compile Include="System.Threading\01 线程基础操作\System.Threading.Abort.cs" />
+    <Compile Include="System.Threading\01 线程基础操作\System.Threading.ThreadState.cs" />
+    <Compile Include="System.Threading\01 线程基础操作\给线程传递参数.cs" />
     <Compile Include="System.Threading\02 竞争条件 Race Condition\Lock和Monitor以及死锁.cs" />
+    <Compile Include="System.Threading\03 线程异常处理\01 线程异常初识.cs" />
+    <Compile Include="System.Threading\04 线程同步\01 Interlocked-执行基本原子操作避免条件竞争.cs" />
     <Compile Include="Thrift\Thrift.Test.cs" />
     <Compile Include="Thrift\thrift4flume\gen-csharp\Status.cs" />
     <Compile Include="Thrift\thrift4flume\gen-csharp\ThriftFlumeEvent.cs" />
@@ -178,7 +180,7 @@
     <Compile Include="System.Threading\System.Threading.CancellationTokenSource.cs" />
     <Compile Include="System.Threading\System.Threading.Thread.Tests.cs" />
     <Compile Include="System.Threading\System.Threading.ThreadPool.cs" />
-    <Compile Include="System.Threading\01 线程通信和同步\System.Threading.Join.cs" />
+    <Compile Include="System.Threading\01 线程基础操作\System.Threading.Join.cs" />
     <None Include="Thrift\thrift4flume\aslv2" />
     <None Include="Thrift\thrift4flume\flume.thrift" />
     <None Include="Thrift\thrift4flume\gen-csharp\ReadMe.md" />
