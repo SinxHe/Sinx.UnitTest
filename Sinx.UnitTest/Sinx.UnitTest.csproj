@@ -168,6 +168,7 @@
     <Compile Include="System.Threading\02 竞争条件 Race Condition\Lock和Monitor以及死锁.cs" />
     <Compile Include="System.Threading\03 线程异常处理\01 线程异常初识.cs" />
     <Compile Include="System.Threading\04 线程同步\01 Interlocked-执行基本原子操作避免条件竞争.cs" />
+    <Compile Include="System.Threading\04 线程同步\02 Mutex.cs" />
     <Compile Include="Thrift\Thrift.Test.cs" />
     <Compile Include="Thrift\thrift4flume\gen-csharp\Status.cs" />
     <Compile Include="Thrift\thrift4flume\gen-csharp\ThriftFlumeEvent.cs" />
