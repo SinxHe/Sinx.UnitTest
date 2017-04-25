@@ -30,7 +30,7 @@ namespace Sinx.UnitTest.Hadoop.HBase
 			var model = JsonConvert.DeserializeObject<Table>(content);
 		}
 
-		[Fact]
+		//[Fact]
 		public void Rest_Post_CreateTable()
 		{
 			var tableName = "TableFromSinxUnitTest" + _getNowDateTime();

@@ -183,6 +183,7 @@
     <Compile Include="System.Threading\System.Threading.Thread.Tests.cs" />
     <Compile Include="System.Threading\System.Threading.ThreadPool.cs" />
     <Compile Include="System.Threading\01 线程基础操作\System.Threading.Join.cs" />
+    <Compile Include="System\System.Object.Test.cs" />
     <None Include="Thrift\thrift4flume\aslv2" />
     <None Include="Thrift\thrift4flume\flume.thrift" />
     <None Include="Thrift\thrift4flume\gen-csharp\ReadMe.md" />
