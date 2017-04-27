@@ -148,6 +148,7 @@
     <Compile Include="Base\CtorTest.cs" />
     <Compile Include="Base\GCNotification.cs" />
     <Compile Include="Base\KeyWord_is_as.cs" />
+    <Compile Include="Base\PartialMethodTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
     <Compile Include="EF\CodeFirst.FluentApi.Tests.cs" />
     <Compile Include="EF\CodeFirst.Tests.cs" />
