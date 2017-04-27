@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\BigO\01_BigO_Infer.cs" />
     <Compile Include="Algorithm\Sort\00TestEnvironment.cs" />
     <Compile Include="Algorithm\Sort\01BubbleTest.cs" />
     <Compile Include="Algorithm\Sort\02SelectTest.cs" />
