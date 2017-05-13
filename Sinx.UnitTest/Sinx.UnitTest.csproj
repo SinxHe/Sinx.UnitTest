@@ -181,6 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Base\FlumeQuery.md" />
+    <None Include="Base\MarkDown.md" />
     <None Include="packages.config" />
     <Compile Include="System.Threading\ExecutionContext.Tests.cs" />
     <Compile Include="System.Threading\System.Threading.CancellationTokenSource.cs" />
