@@ -1,0 +1,21 @@
+﻿@using Sinx.UnitTest.UI.AspNetCore.Controllers
+@model IEnumerable<Sinx.UnitTest.UI.AspNetCore.Models.DTO_Article>
+@{
+	ViewData["Title"] = "DotNetStudio";
+}
+@section Styles{
+	<script src="~/lib/marked/marked.min.js"></script>
+}
+<hr />
+<div class="page-header">
+	<h1>Dot Net Studio <small>@*SinxHe*@</small></h1>
+</div>
+<hr />
+<ul class="list-group">
+	@foreach (var article in Model)
+	{
+		<li class="list-group-item">
+			<a href="@Url.Action(nameof(ArticlesController.Single), new {id = article.Id})">@article.Title</a>
+		</li>
+	}
+</ul>

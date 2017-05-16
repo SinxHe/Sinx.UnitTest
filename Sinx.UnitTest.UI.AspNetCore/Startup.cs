@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sinx.UnitTest.Domain.Model;
@@ -22,6 +25,8 @@ namespace Sinx.UnitTest.UI.AspNetCore
 
 			services.AddScoped<IBrainstormSessionRepository,
 				EFStormSessionRepository>();
+			services.AddSingleton<IDbConnection>(new SqlConnection("Data Source=neter.me;Initial Catalog=DotNetStudioDb;User Id=sa;Password=SinxHe*#7370#"));
+			services.AddSingleton(typeof(ArticleRepository), sp => new ArticleRepository(sp.GetService<IDbConnection>()));
 		}
 
 		public void Configure(IApplicationBuilder app,
