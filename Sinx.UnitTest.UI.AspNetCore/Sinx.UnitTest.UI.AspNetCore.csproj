@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
-
+	  <RuntimeIdentifiers>win7-x64;linux</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>
@@ -490,11 +489,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
   </ItemGroup>
-	<ItemGroup>
-		<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
-	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Sinx.UnitTest.Domain.Model\Sinx.UnitTest.Domain.Model.csproj" />
 	  <ProjectReference Include="..\Sinx.UnitTest.Infrastructure.Repository\Sinx.UnitTest.Infrastructure.Repository.csproj" />

@@ -45,7 +45,7 @@ namespace Sinx.UnitTest.UI.AspNetCore
 
 			app.UseStaticFiles();
 
-			app.UseMvcWithDefaultRoute();
+			app.UseMvc();
 		}
 
 		public async Task InitializeDatabaseAsync(IBrainstormSessionRepository repo)

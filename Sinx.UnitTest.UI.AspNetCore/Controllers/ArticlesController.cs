@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +14,8 @@ namespace Sinx.UnitTest.UI.AspNetCore.Controllers
 	    {
 		    _repo = repo;
 	    }
+		[HttpGet]
+		[HttpGet("~/")]
 		public async Task<IActionResult> List(int index = 1, int size = 20)
         {
 	        var article = await _repo.GetAsync(index, size);
