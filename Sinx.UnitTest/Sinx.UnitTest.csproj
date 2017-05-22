@@ -151,6 +151,7 @@
     <Compile Include="Base\KeyWord_is_as.cs" />
     <Compile Include="Base\PartialMethodTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
+    <Compile Include="Db\MySql\ProcedureTests.cs" />
     <Compile Include="EF\CodeFirst.FluentApi.Tests.cs" />
     <Compile Include="EF\CodeFirst.Tests.cs" />
     <Compile Include="EF\ConnectStrings.cs" />
