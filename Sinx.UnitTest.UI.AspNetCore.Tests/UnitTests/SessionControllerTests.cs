@@ -9,7 +9,7 @@ using Sinx.UnitTest.UI.AspNetCore.Controllers;
 using Sinx.UnitTest.UI.AspNetCore.ViewModels;
 using Xunit;
 
-namespace Sinx.UnitTest.UI.AspNetCore.Tests
+namespace Sinx.UnitTest.UI.AspNetCore.Tests.UnitTests
 {
     public class SessionControllerTests
     {
