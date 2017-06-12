@@ -73,5 +73,13 @@ namespace Sinx.UnitTest.System.Linq.Expressions
 			Assert.Equal(firstParam.NodeType, ExpressionType.Parameter);
 			Assert.Equal(firstParam.Type, typeof(int));
 		}
+
+		[Fact]
+		public void Expression_ToString()
+		{
+			Expression<Func<int, bool>> exp = a => a > 10;
+			Expression e = exp;
+			e.ToString();
+		}
 	}
 }

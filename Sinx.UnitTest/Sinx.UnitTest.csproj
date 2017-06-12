@@ -151,6 +151,8 @@
     <Compile Include="Base\KeyWord_is_as.cs" />
     <Compile Include="Base\PartialMethodTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
+    <Compile Include="Db\Dapper\UsageTest.cs" />
+    <Compile Include="Db\Fake.cs" />
     <Compile Include="Db\MySql\ProcedureTests.cs" />
     <Compile Include="EF\CodeFirst.FluentApi.Tests.cs" />
     <Compile Include="EF\CodeFirst.Tests.cs" />
@@ -182,8 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Base\FlumeQuery.md" />
-    <None Include="Base\MarkDown.md" />
+    <None Include="Db\Dapper\DapperUsage.md" />
     <None Include="packages.config" />
     <Compile Include="System.Threading\ExecutionContext.Tests.cs" />
     <Compile Include="System.Threading\System.Threading.CancellationTokenSource.cs" />
