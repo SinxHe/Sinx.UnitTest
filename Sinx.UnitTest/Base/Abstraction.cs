@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Sinx.UnitTest.Base
 {
 	#region 使用
@@ -35,5 +39,6 @@ namespace Sinx.UnitTest.Base
 		public double Cost { get; set; }
 		public double Price { get; set; }
 	}
+
 	#endregion
 }
