@@ -23,6 +23,13 @@ namespace Sinx.UnitTest.System.Dynamic
 		}
 
 		[Fact]
+		public void ExpandoObject_Reflection()
+		{
+			var prop = _d.GetType().GetProperty("Name");
+			Assert.NotEqual(prop, "sinx");
+		}
+
+		[Fact]
 		public void ExpandoOjbect_ConvertToIEnumerable_Success()
 		{
 			var id = ((IEnumerable<KeyValuePair<string, object>>)_d).First().Key;
