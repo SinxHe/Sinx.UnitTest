@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Xunit;
 using Moq;
 using Sinx.UnitTest.Domain.Model;
 using Sinx.UnitTest.UI.AspNetCore.Controllers;
 using Sinx.UnitTest.UI.AspNetCore.Models;
 using Sinx.UnitTest.UI.AspNetCore.ViewModels;
+using Xunit;
 
-namespace Sinx.UnitTest.UI.AspNetCore.Tests
+namespace Sinx.UnitTest.UI.AspNetCore.Tests.UnitTests
 {
 	/// <summary>
 	/// 测试Controller

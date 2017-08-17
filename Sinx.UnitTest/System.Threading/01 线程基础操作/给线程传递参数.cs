@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
 using Xunit;
 
-namespace Sinx.UnitTest.System.Threading._01_线程通信和同步
+namespace Sinx.UnitTest.System.Threading._01_线程基础操作
 {
 	public class 给线程传递参数
 	{

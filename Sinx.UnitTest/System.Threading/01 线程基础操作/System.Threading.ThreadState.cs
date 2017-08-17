@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace Sinx.UnitTest.System.Threading._01_线程通信和同步
+namespace Sinx.UnitTest.System.Threading._01_线程基础操作
 {
 	/// <summary>
 	/// 获取线程状态

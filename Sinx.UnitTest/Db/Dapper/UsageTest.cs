@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dapper;
-using Sinx.UnitTest.EF.Models;
 using Xunit;
 
 namespace Sinx.UnitTest.Db.Dapper
