@@ -1,10 +1,42 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Sinx.UnitTest.System.Linq
 {
 	public class EnumerableTests
 	{
+		#region 筛选操作
+
+		#region Where
+		[Fact]
+		public void Where_Test()
+		{
+			// Where 有记录元素的索引
+			var r0 = Enumerable.Range(0, 10)
+				.Where((e, i) => i + e == 4);
+			Assert.Equal(r0, new[] { 2 });
+		}
+		#endregion
+
+		#region OfType
+
+		[Fact]
+		public void OfType_Test()
+		{
+			// OfType 是判断的运行时的类型
+			var r0 = new[] { 1, "2", '3', (object)1, (object)"2", (object)'3' }
+				.OfType<string>()
+				.ToList();
+			Assert.Equal("2", r0.First());
+			Assert.Equal(2, r0.Count);
+		}
+
+		#endregion
+
+		#endregion
+
 		#region 投影操作 
 
 		#region Select / select x into xx
@@ -53,6 +85,60 @@ namespace Sinx.UnitTest.System.Linq
 			// 将源序列中的每个元素跟选择序列中的每个元素一起进行操作
 			var r2 = Enumerable.Range(0, 4).SelectMany(n => Enumerable.Range(0, n), (nS, nT) => nS + " - " + nT);
 			Assert.Equal(r2, new[] { "1 - 0", "2 - 0", "2 - 1", "3 - 0", "3 - 1", "3 - 2" });
+		}
+
+		#endregion
+
+		#endregion
+
+		#region 连接运算符
+
+		#region Join
+
+		[Fact]
+		public void Join_Test()
+		{
+			// 相当于INNER JOIN
+			var sequence0 = Enumerable.Range(0, 10).ToList();
+			var sequence1 = new[] { 1, 3 };
+
+			var r0 = sequence0
+				.Join(sequence1, e0 => e0, e1 => e1, (e0, e1) => e0 + " " + e1);
+			Assert.Equal(r0, new[] { "1 1", "1 1", "3 3" });
+
+			var r1 = from e0 in sequence0
+					 join e1 in sequence1 on e0 equals e1
+					 select e0 + " " + e1;
+			Assert.Equal(r1, new[] { "1 1", "1 1", "3 3" });
+		}
+
+		[Fact]
+		public void Join_WithCompare_Test()
+		{
+			var sequence0 = Enumerable.Range(0, 10).ToList();
+			var sequence1 = new[] { "1", "3" };
+
+			// 这里的比较器接口真的好? 为什么不直接枚举出e0, e1, 然后进行比较?
+			// 在我看来, 直接枚举出e0, e1就可以替换后边的三个参数了
+			var r0 = sequence0
+				.Join(sequence1,
+					e0 => e0, e1 => e1,
+					(e0, e1) => e0 + " " + e1, // 根据两个匹配的元素创建结果
+					new Compare4JoinTest<object>());
+			Assert.Equal(r0, new[] { "1 1", "3 3" });
+		}
+
+		private class Compare4JoinTest<T> : IEqualityComparer<T>
+		{
+			public bool Equals(T x, T y)
+			{
+				return x.ToString() == y.ToString();
+			}
+
+			public int GetHashCode(T obj)
+			{
+				throw new global::System.NotImplementedException();
+			}
 		}
 
 		#endregion
