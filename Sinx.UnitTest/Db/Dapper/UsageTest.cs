@@ -16,8 +16,14 @@ namespace Sinx.UnitTest.Db.Dapper
 			@"SELECT * FROM employees.departments D
 			LEFT JOIN employees.dept_emp DE ON DE.dept_no = D.dept_no
 			LEFT JOIN employees.employees E ON E.emp_no = DE.emp_no");
-
 		}
+
+		[Fact]
+		public async Task Dapper_Procedure()
+		{
+			
+		}
+
 	}
 
 	class Department

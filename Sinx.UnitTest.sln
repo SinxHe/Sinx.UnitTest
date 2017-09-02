@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest", "Sinx.UnitTest\Sinx.UnitTest.csproj", "{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0}"
 EndProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 DotNetTest", "01 DotNetT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 AspNetCoreTest", "02 AspNetCoreTest", "{C42E6CF6-A67C-496D-9E06-DB5F6458F5C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.UI.AspNetCore", "Sinx.UnitTest.UI.AspNetCore\Sinx.UnitTest.UI.AspNetCore.csproj", "{B5A0F31D-AAF1-47E3-8B8E-A33DD58CB674}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.UI.AspNetCore", "Sinx.UnitTest.UI.AspNetCore\Sinx.UnitTest.UI.AspNetCore.csproj", "{B5A0F31D-AAF1-47E3-8B8E-A33DD58CB674}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 UI", "01 UI", "{45D3DAB5-E80C-4DD8-8E7D-B22B09E6C9AA}"
 EndProject
@@ -19,15 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Domain", "03 Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Infrastructure", "04 Infrastructure", "{900D0F56-B7F3-4E68-ABE1-3305FE7BAAB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.Infrastructure", "Sinx.UnitTest.Infrastructure\Sinx.UnitTest.Infrastructure.csproj", "{9B04A085-2F36-4434-AC63-A5E5DB00CA01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.Infrastructure", "Sinx.UnitTest.Infrastructure\Sinx.UnitTest.Infrastructure.csproj", "{9B04A085-2F36-4434-AC63-A5E5DB00CA01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.Infrastructure.Repository", "Sinx.UnitTest.Infrastructure.Repository\Sinx.UnitTest.Infrastructure.Repository.csproj", "{91BA1E82-F07D-4E41-BCBB-4B4D424BCC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.Infrastructure.Repository", "Sinx.UnitTest.Infrastructure.Repository\Sinx.UnitTest.Infrastructure.Repository.csproj", "{91BA1E82-F07D-4E41-BCBB-4B4D424BCC58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.Domain.Model", "Sinx.UnitTest.Domain.Model\Sinx.UnitTest.Domain.Model.csproj", "{665C835B-D1C6-4FA3-9F7C-64497EBAFACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.Domain.Model", "Sinx.UnitTest.Domain.Model\Sinx.UnitTest.Domain.Model.csproj", "{665C835B-D1C6-4FA3-9F7C-64497EBAFACD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 UnitTest", "05 UnitTest", "{EB8D7799-3B21-4C37-A13F-D9A1069FCD25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.UI.AspNetCore.Tests", "Sinx.UnitTest.UI.AspNetCore.Tests\Sinx.UnitTest.UI.AspNetCore.Tests.csproj", "{409C0A7C-F960-4417-8EC4-49EA89CCC780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.UI.AspNetCore.Tests", "Sinx.UnitTest.UI.AspNetCore.Tests\Sinx.UnitTest.UI.AspNetCore.Tests.csproj", "{409C0A7C-F960-4417-8EC4-49EA89CCC780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.DesignPattern", "Sinx.UnitTest.DesignPattern\Sinx.UnitTest.DesignPattern.csproj", "{51C816DA-5B31-496A-AADF-523C22CF1D0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{409C0A7C-F960-4417-8EC4-49EA89CCC780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{409C0A7C-F960-4417-8EC4-49EA89CCC780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{409C0A7C-F960-4417-8EC4-49EA89CCC780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,8 +81,10 @@ Global
 		{665C835B-D1C6-4FA3-9F7C-64497EBAFACD} = {585F9F8D-F17C-4EF6-8C30-9057B3E7F840}
 		{EB8D7799-3B21-4C37-A13F-D9A1069FCD25} = {C42E6CF6-A67C-496D-9E06-DB5F6458F5C0}
 		{409C0A7C-F960-4417-8EC4-49EA89CCC780} = {EB8D7799-3B21-4C37-A13F-D9A1069FCD25}
+		{51C816DA-5B31-496A-AADF-523C22CF1D0B} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 	EndGlobalSection
 EndGlobal
