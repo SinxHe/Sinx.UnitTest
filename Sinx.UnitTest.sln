@@ -29,7 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 UnitTest", "05 UnitTest"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.UI.AspNetCore.Tests", "Sinx.UnitTest.UI.AspNetCore.Tests\Sinx.UnitTest.UI.AspNetCore.Tests.csproj", "{409C0A7C-F960-4417-8EC4-49EA89CCC780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.DesignPattern", "Sinx.UnitTest.DesignPattern\Sinx.UnitTest.DesignPattern.csproj", "{51C816DA-5B31-496A-AADF-523C22CF1D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.DesignPattern", "Sinx.UnitTest.DesignPattern\Sinx.UnitTest.DesignPattern.csproj", "{51C816DA-5B31-496A-AADF-523C22CF1D0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest.AspNetCore", "Sinx.UnitTest.AspNetCore\Sinx.UnitTest.AspNetCore.csproj", "{4704BA47-0948-4F09-B70B-9369A8529104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51C816DA-5B31-496A-AADF-523C22CF1D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4704BA47-0948-4F09-B70B-9369A8529104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4704BA47-0948-4F09-B70B-9369A8529104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4704BA47-0948-4F09-B70B-9369A8529104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4704BA47-0948-4F09-B70B-9369A8529104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,9 +88,10 @@ Global
 		{EB8D7799-3B21-4C37-A13F-D9A1069FCD25} = {C42E6CF6-A67C-496D-9E06-DB5F6458F5C0}
 		{409C0A7C-F960-4417-8EC4-49EA89CCC780} = {EB8D7799-3B21-4C37-A13F-D9A1069FCD25}
 		{51C816DA-5B31-496A-AADF-523C22CF1D0B} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
+		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
