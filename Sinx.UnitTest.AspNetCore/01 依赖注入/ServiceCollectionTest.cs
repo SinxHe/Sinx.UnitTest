@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Sinx.UnitTest.AspNetCore
+namespace Sinx.UnitTest.AspNetCore._01_“¿¿µ◊¢»Î
 {
     public class ServiceCollectionTest
     {
