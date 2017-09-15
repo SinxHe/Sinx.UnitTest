@@ -39,5 +39,55 @@ namespace Sinx.UnitTest.AspNetCore._01_依赖注入
 			// 父子关系的层级只有一级
 			Assert.Same(root, serviceProvider0);
 		}
+
+		[Fact]
+	    public void ServiceProvider_ServiceLifeTime()
+		{
+			var root = new ServiceCollection()
+				.AddTransient<IA, A>()	// 每次都创建
+				.AddScoped<IB, B>()		// 在作用域内使用单例
+				.AddSingleton<IC, C>()	// 一直单例
+				.BuildServiceProvider();
+			var child0 = root
+				.GetService<IServiceScopeFactory>()
+				.CreateScope()
+				.ServiceProvider;
+			var child1 = root
+				.GetService<IServiceScopeFactory>()
+				.CreateScope()
+				.ServiceProvider;
+			// Transient: 每次都创建的, ServiceProvider创建的实例不一样
+			Assert.NotSame(root.GetService<IA>(), root.GetService<IA>());
+			// Scope: 同一个ServiceProvider创建的一样
+			Assert.Same(child0.GetService<IB>(), child0.GetService<IB>());
+			// Scope: 不同的ServiceProvider创建的不一样
+			Assert.Same(child0.GetService<IB>(), child1.GetService<IB>());
+			// Singleton: 同根的创建的都一样
+			Assert.Same(child0.GetService<IC>(), child1.GetService<IC>());
+		}
     }
+
+	public interface IA
+	{
+	}
+
+	public interface IB
+	{
+	}
+
+	public interface IC
+	{
+	}
+
+	public class A : IA
+	{
+	}
+
+	public class B : IB
+	{
+	}
+
+	public class C : IC
+	{
+	}
 }
