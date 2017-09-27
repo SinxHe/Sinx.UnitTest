@@ -62,7 +62,7 @@ namespace Sinx.UnitTest.AspNetCore._01_依赖注入
 			// Scope: 同一个ServiceProvider创建的一样
 			Assert.Same(child0.GetService<IB>(), child0.GetService<IB>());
 			// Scope: 不同的ServiceProvider创建的不一样
-			Assert.Same(child0.GetService<IB>(), child1.GetService<IB>());
+			Assert.NotSame(child0.GetService<IB>(), child1.GetService<IB>());
 			// Singleton: 同根的创建的都一样
 			Assert.Same(child0.GetService<IC>(), child1.GetService<IC>());
 		}
