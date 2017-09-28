@@ -25,17 +25,20 @@ namespace Sinx.UnitTest.AspNetCore._00_基础知识.FileProviders
 			Assert.False(isCallBackInvoke);
 			Assert.False(token.HasChanged);
 			// 进行了文件更改
-			File.WriteAllText(Path.Combine(provider.Root, "appsettings.json"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			var filePath = Path.Combine(provider.Root, "appsettings.json");
+			var fileContent = File.ReadAllText(filePath);
+			File.WriteAllText(filePath, DateTime.Now.ToString(CultureInfo.InvariantCulture));
 			Task.Delay(TimeSpan.FromSeconds(2)).Wait();	// 等待回调执行完成
 			Assert.True(isCallBackInvoke);
 			Assert.True(token.HasChanged);
 			// 只能监控一次
 			isCallBackInvoke = false;
-			File.WriteAllText(Path.Combine(provider.Root, "appsettings.json"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			File.WriteAllText(filePath, DateTime.Now.ToString(CultureInfo.InvariantCulture));
 			Task.Delay(TimeSpan.FromSeconds(2)).Wait(); // 等待回调执行完成
 			Assert.False(isCallBackInvoke);	// !!
 			Assert.True(token.HasChanged);
 
+			File.WriteAllText(filePath, fileContent);
 			// Token.HasChanged没有set方法, 所以只能监控一次
 			//token.HasChanged = false;
 		}
@@ -47,16 +50,20 @@ namespace Sinx.UnitTest.AspNetCore._00_基础知识.FileProviders
 			var isCallBackInvoked = false;
 			var token = provider.Watch("appsettings.json");
 			token.RegisterChangeCallback(_ => isCallBackInvoked = true, null);
-			await File.WriteAllTextAsync(Path.Combine(provider.Root, "appsettings.json"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			var filePath = Path.Combine(provider.Root, "appsettings.json");
+			var fileContent = File.ReadAllText(filePath);
+			await File.WriteAllTextAsync(filePath, DateTime.Now.ToString(CultureInfo.InvariantCulture));
 			Assert.True(isCallBackInvoked);
 			Assert.True(token.HasChanged);
 
 			isCallBackInvoked = false;
 			token = provider.Watch("appsettings.json");
 			token.RegisterChangeCallback(_ => isCallBackInvoked = true, null);
-			await File.WriteAllTextAsync(Path.Combine(provider.Root, "appsettings.json"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			await File.WriteAllTextAsync(filePath, DateTime.Now.ToString(CultureInfo.InvariantCulture));
 			Assert.True(isCallBackInvoked);
 			Assert.True(token.HasChanged);
+
+			File.WriteAllText(filePath, fileContent);
 		}
 
 		[Fact]
@@ -65,14 +72,18 @@ namespace Sinx.UnitTest.AspNetCore._00_基础知识.FileProviders
 			var provider = new PhysicalFileProvider(_appBasePath);
 			var isCallBackInvoked = false;
 			ChangeToken.OnChange(() => provider.Watch("appsettings.json"), () => isCallBackInvoked = true);
-			await File.WriteAllTextAsync(Path.Combine(provider.Root, "appsettings.json"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			var filePath = Path.Combine(provider.Root, "appsettings.json");
+			var fileContent = File.ReadAllText(filePath);
+			await File.WriteAllTextAsync(filePath, DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			Task.Delay(TimeSpan.FromSeconds(1)).Wait();
 			Assert.True(isCallBackInvoked);
 
 			// 第二次监控
 			isCallBackInvoked = false;
-			await File.WriteAllTextAsync(Path.Combine(provider.Root, "appsettings.json"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			await File.WriteAllTextAsync(filePath, DateTime.Now.ToString(CultureInfo.InvariantCulture));
+			Task.Delay(TimeSpan.FromSeconds(1)).Wait();
 			Assert.True(isCallBackInvoked);
-
+			File.WriteAllText(filePath,fileContent);
 		}
 	}
 }
