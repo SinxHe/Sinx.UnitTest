@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using Xunit;
 
@@ -22,7 +19,12 @@ namespace Sinx.UnitTest.AspNetCore._00_基础知识.FileProviders
 		    Task.Delay(TimeSpan.FromSeconds(1)).Wait();
 		    Assert.True(isCallbackInvoked);
 		    Assert.True(tokenSource.Token.IsCancellationRequested);
-	    }
+			// 已经cancel的token再次cancel不会触发回调
+			isCallbackInvoked = false;
+		    tokenSource.Cancel();
+		    Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+		    Assert.False(false);
+		}
 
 		[Fact]
 	    public void IChangeToken_ConfigurationReloadToken()
