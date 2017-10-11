@@ -7,11 +7,12 @@ using System.Collections.Generic;
 
 namespace Sinx.UnitTest.AspNetCore._02_配置
 {
-    public class IOptionTests
+    public class _05IOptionTests
     {
 		private readonly IConfiguration _conf;
 		private readonly IServiceCollection _services;
-		public IOptionTests()
+
+		public _05IOptionTests()
 		{
 			_conf = new ConfigurationBuilder()
 				.SetBasePath(PlatformServices.Default.Application.ApplicationBasePath)
@@ -38,9 +39,11 @@ namespace Sinx.UnitTest.AspNetCore._02_配置
 			var useMyOption = sp.GetService<UseMyOption>();
 			Assert.Equal("daxiong", useMyOption.Option.Name);
 		}
+
 		[Fact]
 	    public void IOptoin_AddIOptionsThatBindJsonFile()
 	    {
+			// 添加IOptions服务 [重要]
 		    _services.AddOptions();
 			// Microsoft.Extensions.Options.ConfigurationExtensions.dll
 			// Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions
