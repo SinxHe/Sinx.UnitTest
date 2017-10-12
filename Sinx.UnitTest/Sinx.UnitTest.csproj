@@ -164,6 +164,10 @@
     <Compile Include="Base\PartialMethodTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
     <Compile Include="Db\Dapper\UsageTest.cs" />
+    <Compile Include="Db\ES\2017-10-12 Start.cs" />
+    <Compile Include="Db\ES\FakeStudent.cs" />
+    <Compile Include="Db\ES\Info.cs" />
+    <Compile Include="Db\ES\Student.cs" />
     <Compile Include="Db\Fake.cs" />
     <Compile Include="Db\MySql\ProcedureTests.cs" />
     <Compile Include="EF\CodeFirst.FluentApi.Tests.cs" />
