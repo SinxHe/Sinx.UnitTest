@@ -161,6 +161,7 @@
     <Compile Include="Base\CtorTest.cs" />
     <Compile Include="Base\GCNotification.cs" />
     <Compile Include="Base\KeyWord_is_as.cs" />
+    <Compile Include="Base\LazyTest.cs" />
     <Compile Include="Base\PartialMethodTest.cs" />
     <Compile Include="Base\ReferenceTypeAndValueType.Tests.cs" />
     <Compile Include="Db\Dapper\UsageTest.cs" />
