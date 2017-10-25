@@ -158,6 +158,7 @@
     <Compile Include="Algorithm\Sort\03InsertTest.cs" />
     <Compile Include="Algorithm\Sort\04MergeTest.cs" />
     <Compile Include="Base\Abstraction.cs" />
+    <Compile Include="Base\CancellationTokenSourceTests.cs" />
     <Compile Include="Base\CtorTest.cs" />
     <Compile Include="Base\GCNotification.cs" />
     <Compile Include="Base\KeyWord_is_as.cs" />
