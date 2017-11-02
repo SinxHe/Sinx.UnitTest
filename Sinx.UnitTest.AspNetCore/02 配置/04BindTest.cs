@@ -27,6 +27,26 @@ namespace Sinx.UnitTest.AspNetCore._02_配置
 			Assert.Equal(11, window.Width);
 		}
 
+		[Fact]
+		public void Bind_Array()
+		{
+			var dic = new Dictionary<string, string>
+			{
+				{ "Array:0", "Element0"},
+				{ "Array:1", "Element1"},
+				{ "Height", "33"}
+			};
+			var conf = new ConfigurationBuilder()
+				.AddInMemoryCollection(dic)
+				.Build();
+			var array = conf.GetValue<string[]>("Array");
+			Assert.Null(array);
+			var window = new MyWindow();
+			conf.Bind(window);
+			Assert.NotEmpty(window.Array);
+			Assert.Equal(window.Height, 33);
+		}
+
 		public class MyWindow
 		{
 			public string Name { get; set; }
@@ -34,6 +54,7 @@ namespace Sinx.UnitTest.AspNetCore._02_配置
 			public int Width { get; set; }
 			public int Top { get; set; }
 			public int Left { get; set; }
+			public string[] Array { get; set; }
 		}
 	}
 }
