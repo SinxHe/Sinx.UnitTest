@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 using Confluent.Kafka.Serialization;
@@ -53,9 +54,20 @@ namespace Sinx.UnitTest.Hadoop.Kafka
 			Assert.NotNull(res1.Value);
 		}
 
-		public async Task Publisher_()
+		[Fact(Skip = "a_large_topic has coreated")]
+		public void Publisher_GenerateABigPartition()
 		{
-
+			const string topicName = "a_large_topic";
+			var i = 0;
+			var beginTime = DateTime.Now;
+			while (true)
+			{
+				_producer.ProduceAsync(topicName, null, $"value-{Interlocked.Increment(ref i)}");
+				if (DateTime.Now - beginTime > TimeSpan.FromMinutes(60))
+				{
+					break;
+				}
+			}
 		}
 	}
 }
