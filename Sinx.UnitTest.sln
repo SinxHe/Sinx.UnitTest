@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest", "Sinx.UnitTest\Sinx.UnitTest.csproj", "{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0}"
 EndProject
@@ -33,9 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.DesignPattern
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.AspNetCore", "Sinx.UnitTest.AspNetCore\Sinx.UnitTest.AspNetCore.csproj", "{4704BA47-0948-4F09-B70B-9369A8529104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Concurrency.Tests", "Sinx.Concurrency.Tests\Sinx.Concurrency.Tests.csproj", "{84CEBBF0-BE18-4C09-89D9-96BB51E401C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Concurrency.Tests", "Sinx.Concurrency.Tests\Sinx.Concurrency.Tests.csproj", "{84CEBBF0-BE18-4C09-89D9-96BB51E401C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Entry", "Sinx.Entry\Sinx.Entry.csproj", "{427259F5-AC49-4C9B-977C-6CD8A37D028E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Entry", "Sinx.Entry\Sinx.Entry.csproj", "{427259F5-AC49-4C9B-977C-6CD8A37D028E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Package.Tests", "Sinx.Package.Tests\Sinx.Package.Tests.csproj", "{DE2DB04C-5A2E-4DF0-85BC-528BB5CD24BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{427259F5-AC49-4C9B-977C-6CD8A37D028E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{427259F5-AC49-4C9B-977C-6CD8A37D028E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{427259F5-AC49-4C9B-977C-6CD8A37D028E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE2DB04C-5A2E-4DF0-85BC-528BB5CD24BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2DB04C-5A2E-4DF0-85BC-528BB5CD24BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2DB04C-5A2E-4DF0-85BC-528BB5CD24BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2DB04C-5A2E-4DF0-85BC-528BB5CD24BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,7 +109,7 @@ Global
 		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
