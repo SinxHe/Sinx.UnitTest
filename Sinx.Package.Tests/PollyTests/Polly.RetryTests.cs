@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Sinx.Package.Tests.PollyTests
 {
-	public class PollyTests
+	public partial class PollyTests
 	{
 		private readonly ILogger _logger;
 		public PollyTests()
