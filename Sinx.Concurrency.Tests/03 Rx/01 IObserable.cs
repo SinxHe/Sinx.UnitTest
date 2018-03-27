@@ -10,32 +10,11 @@ using Xunit;
 
 namespace Sinx.Concurrency.Tests._03_Rx
 {
-    public class _01_IObservable创建
-    {
-        /// <summary>
-        /// Empty -> OnComplete
-        /// </summary>
-        /// <returns></returns>
-        [Fact]
-        public void IObservable_Empty()
-        {
-            var observable = Observable.Empty<int>();   // 冷启动
-            var dis = observable.Subscribe(Console.WriteLine, () => Console.WriteLine("Complete"));
-            dis.Dispose();  // 取消订阅
-        }
+	public class _01_IObservable
+	{
+        #region 创建
 
-        /// <summary>
-        /// Return -> OnNext -> OnComplete
-        /// </summary>
-        [Fact]
-        public void IObservable_Return()
-        {
-            var observable = Observable.Return(1);
-            var dis = observable.Subscribe(Console.WriteLine, () => Console.WriteLine("Complete"));
-            dis.Dispose();
-        }
-
-        [Fact]
+		[Fact]
         public async Task IObservable_Create_Create()
         {
             // 没有输出
@@ -147,5 +126,12 @@ namespace Sinx.Concurrency.Tests._03_Rx
             client.DownloadStringAsync(new Uri("http://invalid.example.com"));
             Thread.Sleep(3000);
         }
+        #endregion
+
+        #region IObservable.Subscribe(IObserver<T>)
+
+
+
+        #endregion
     }
 }

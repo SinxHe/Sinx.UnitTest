@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Confluent.Kafka;
 using Confluent.Kafka.Serialization;
 using Microsoft.Extensions.Configuration;
@@ -48,6 +50,37 @@ namespace Sinx.UnitTest.Hadoop.Kafka
 
 		}
 
+		private int _countLimit;
+		[Fact]
+		public void Consumer_OnMessage_CountLimitOnMutipleThread()
+		{
+			var ts = TimeSpan.FromSeconds(5);
+			var consumer = GetConsumer();
+			consumer.OnMessage += (s, e) =>
+			{
+				Interlocked.Increment(ref _countLimit);
+				Task.Run(() =>
+				{
+					Task.Delay(ts).Wait();
+					Interlocked.Decrement(ref _countLimit);
+				});
+			};
+			consumer.Assign(GetTopicPartitionOffset(TOPIC_A_LARGE_COUNT));
+			while (true)
+			{
+				if (_countLimit < 100)
+				{
+					consumer.Poll(ts);
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			consumer.Dispose();
+		}
+
 		[Fact]
 		public void Consumer_Commit_CommitHadCommitedOffset()
 		{
@@ -59,7 +92,7 @@ namespace Sinx.UnitTest.Hadoop.Kafka
 				if (e.Offset == 10)
 				{
 					// 下一次单元测试拿到的Offset是3
-					c.CommitAsync(new []{new TopicPartitionOffset(e.Topic, 0, 3)});
+					c.CommitAsync(new[] { new TopicPartitionOffset(e.Topic, 0, 3) });
 				}
 				else
 				{
@@ -74,7 +107,6 @@ namespace Sinx.UnitTest.Hadoop.Kafka
 			consumer.Poll(TimeSpan.FromSeconds(10));
 
 			// Assert
-
 			consumer.Dispose();
 		}
 
@@ -265,6 +297,12 @@ namespace Sinx.UnitTest.Hadoop.Kafka
 			};
 			var valDeserializer = new StringDeserializer(Encoding.UTF8);
 			var consumer = new Consumer<Null, string>(advancedConsumerConfig, null, valDeserializer);
+			ConfigureEvent(consumer);
+			return consumer;
+		}
+
+		private void ConfigureEvent(Consumer<Null, string> consumer)
+		{
 			// NOTICE: All event handlers are called on the main thread.
 			// Raised on deserialization errors or when a consumed message has an error != NoError.
 			consumer.OnConsumeError += (_, msg)
@@ -279,54 +317,53 @@ namespace Sinx.UnitTest.Hadoop.Kafka
 			consumer.OnPartitionsAssigned += Consumer_OnPartitionsAssigned;
 			consumer.OnPartitionsRevoked += Consumer_OnPartitionsRevoked;
 			consumer.OnStatistics += (_, json) => Console.WriteLine($"Statistics: {json}");
-			return consumer;
-		}
 
-		private void Consumer_OnPartitionsAssigned(object sender, List<TopicPartition> partitions)
-		{
-			var consumer = (Consumer)sender;
-			Console.WriteLine($"Assigned partitions: [{string.Join(", ", partitions)}], member id: {consumer.MemberId}");
-			consumer.Assign(partitions);
-		}
-
-		private void Consumer_OnPartitionsRevoked(object sender, List<TopicPartition> partitions)
-		{
-			var consumer = (Consumer)sender;
-			Console.WriteLine($"Revoked partitions: [{string.Join(", ", partitions)}]");
-			try
+			void Consumer_OnPartitionsAssigned(object sender, List<TopicPartition> partitions)
 			{
-				consumer.Unassign();
+				var c = (Consumer)sender;
+				Console.WriteLine($"Assigned partitions: [{string.Join(", ", partitions)}], member id: {consumer.MemberId}");
+				c.Assign(partitions);
 			}
-			catch (Exception ex)
+
+			void Consumer_OnPartitionsRevoked(object sender, List<TopicPartition> partitions)
 			{
-				Console.WriteLine($"OnPartitionsRevoked: {ex.Message}");
+				var c = (Consumer)sender;
+				Console.WriteLine($"Revoked partitions: [{string.Join(", ", partitions)}]");
+				try
+				{
+					c.Unassign();
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"OnPartitionsRevoked: {ex.Message}");
+				}
 			}
-		}
 
-		private void _advancedConsumer_OnPartitionEOF(object sender, TopicPartitionOffset e)
-		{
-			Console.WriteLine($"OnPartitionEOF: [topic: {e.Topic} partition: {e.Partition} offset: {e.Offset}]");
-		}
-
-		private void _advancedConsumer_OnOffsetsCommitted(object sender, CommittedOffsets commit)
-		{
-			if (commit.Error)
+			void _advancedConsumer_OnPartitionEOF(object sender, TopicPartitionOffset e)
 			{
-				Console.WriteLine($"OnOffsetsCommitted: Failed to commit offsets: {commit.Error}");
+				Console.WriteLine($"OnPartitionEOF: [topic: {e.Topic} partition: {e.Partition} offset: {e.Offset}]");
 			}
-			Console.WriteLine($"OnOffsetsCommitted: Successfully committed offsets: [{string.Join(", ", commit.Offsets)}]");
-		}
 
-		private void _advancedConsumer_OnMessage(object sender, Message<Null, string> e)
-		{
-			Console.WriteLine(
-				$"OnMessage: [topic: {e.Topic} partition: {e.Partition} " +
-				$"offset: {e.Offset}] key: {e.Key} value: {e.Value}");
-		}
+			void _advancedConsumer_OnOffsetsCommitted(object sender, CommittedOffsets commit)
+			{
+				if (commit.Error)
+				{
+					Console.WriteLine($"OnOffsetsCommitted: Failed to commit offsets: {commit.Error}");
+				}
+				Console.WriteLine($"OnOffsetsCommitted: Successfully committed offsets: [{string.Join(", ", commit.Offsets)}]");
+			}
 
-		private void _advancedConsumer_OnLog(object sender, LogMessage e)
-		{
-			Console.WriteLine($"OnLog: {JObject.FromObject(e)}");
+			void _advancedConsumer_OnMessage(object sender, Message<Null, string> e)
+			{
+				Console.WriteLine(
+					$"OnMessage: [topic: {e.Topic} partition: {e.Partition} " +
+					$"offset: {e.Offset}] key: {e.Key} value: {e.Value}");
+			}
+
+			void _advancedConsumer_OnLog(object sender, LogMessage e)
+			{
+				Console.WriteLine($"OnLog: {JObject.FromObject(e)}");
+			}
 		}
 	}
 }
