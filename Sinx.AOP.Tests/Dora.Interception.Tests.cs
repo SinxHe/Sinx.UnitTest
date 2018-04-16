@@ -33,6 +33,7 @@ namespace Sinx.AOP.Tests
 
         private interface IFoo
         {
+            [Decorate]
             Task<int> GetAsync();
         }
 
@@ -48,14 +49,14 @@ namespace Sinx.AOP.Tests
         {
             public override void Use(IInterceptorChainBuilder builder)
             {
-                builder.Use<Decorate>(Order);
+                builder.Use<DecorateInterceptor>(Order);
             }
         }
 
-        private class Decorate
+        private class DecorateInterceptor
         {
             private readonly InterceptDelegate _next;
-            public Decorate(InterceptDelegate next)
+            public DecorateInterceptor(InterceptDelegate next)
             {
                 _next = next;
             }
