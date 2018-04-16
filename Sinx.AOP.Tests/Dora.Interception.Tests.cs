@@ -26,7 +26,7 @@ namespace Sinx.AOP.Tests
         {
             var foo = _sp.GetRequiredService<IFoo>();
             var r = await foo.GetAsync();
-            var dt = DateTimeOffset.Parse(Environment.GetEnvironmentVariable("Dora_Interception_Tests"));
+            var dt = DateTimeOffset.Parse(Environment.GetEnvironmentVariable("Dora_Interception_Tests")??DateTimeOffset.Now.AddDays(-1).ToString());
             Assert.Equal(1, r);
             Assert.True(DateTimeOffset.Now - dt < TimeSpan.FromSeconds(2));
         }
@@ -61,10 +61,11 @@ namespace Sinx.AOP.Tests
                 _next = next;
             }
 
-            public Task InvokeAsync(InvocationContext context)
+            public async Task InvokeAsync(InvocationContext context)
             {
                 Environment.SetEnvironmentVariable("Dora_Interception_Tests", DateTimeOffset.Now.ToString());
-                return _next(context);
+                await Task.Delay(TimeSpan.FromSeconds(1));
+                await _next(context);
             }
         }
     }
