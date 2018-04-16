@@ -44,7 +44,7 @@ namespace Sinx.Concurrency.Tests._03_Rx
 					    o.OnNext(num);
 				    }).ContinueWith(t =>
 				    {
-						if (!t.IsCompletedSuccessfully)
+						if (t.IsFaulted)
 						{
 							o.OnError(t.Exception);
 						}
