@@ -247,9 +247,6 @@
     <Compile Include="System.Threading\System.Threading.ThreadPool.cs" />
     <Compile Include="System.Threading\01 线程基础操作\System.Threading.Join.cs" />
     <Compile Include="System\System.Object.Test.cs" />
-    <None Include="sensitive.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
