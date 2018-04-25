@@ -11,9 +11,9 @@ namespace Sinx.Entry
 		static void Main(string[] args)
 		{
 			var demo = new ServiceCollection()
-					.AddSingleton<IDemo, Demo>()
+					.AddSingleton<Demo>()
 					.BuildInterceptableServiceProvider()
-					.GetRequiredService<IDemo>();
+					.GetRequiredService<Demo>();
 			demo.InvokeAsync();
 			Console.WriteLine("Continue...");
 			Console.Read();
@@ -35,24 +35,25 @@ namespace Sinx.Entry
 			}
 		}
 
-		[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
+		[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Interface)]
 		public class FoobarAttribute : InterceptorAttribute
 		{
 			public override void Use(IInterceptorChainBuilder builder)
 			{
-				builder.Use<FoobarInterceptor>(this.Order);
+				builder.Use<FoobarInterceptor>(Order);
 			}
 		}
 
 		public interface IDemo
 		{
+			//[Foobar]
 			Task InvokeAsync();
 		}
 
 		public class Demo : IDemo
 		{
 			[Foobar]
-			public Task InvokeAsync()
+			public virtual Task InvokeAsync()
 			{
 				Console.WriteLine("Target method is invoked.");
 				return Task.CompletedTask;

@@ -40,7 +40,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Concurrency.Tests", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Entry", "Sinx.Entry\Sinx.Entry.csproj", "{427259F5-AC49-4C9B-977C-6CD8A37D028E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.AOP.Tests", "Sinx.AOP.Tests\Sinx.AOP.Tests.csproj", "{2331B893-738F-42E8-9334-3DC58861E970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AOP.Tests", "Sinx.AOP.Tests\Sinx.AOP.Tests.csproj", "{2331B893-738F-42E8-9334-3DC58861E970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Quartz.Tests", "Sinx.Quartz.Tests\Sinx.Quartz.Tests.csproj", "{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +94,10 @@ Global
 		{2331B893-738F-42E8-9334-3DC58861E970}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2331B893-738F-42E8-9334-3DC58861E970}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2331B893-738F-42E8-9334-3DC58861E970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,7 +118,7 @@ Global
 		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
