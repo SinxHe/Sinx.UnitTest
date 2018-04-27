@@ -42,7 +42,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Entry", "Sinx.Entry\Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AOP.Tests", "Sinx.AOP.Tests\Sinx.AOP.Tests.csproj", "{2331B893-738F-42E8-9334-3DC58861E970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Quartz.Tests", "Sinx.Quartz.Tests\Sinx.Quartz.Tests.csproj", "{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Quartz.Tests", "Sinx.Quartz.Tests\Sinx.Quartz.Tests.csproj", "{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Reflection.Tests", "Sinx.Reflection.Tests\Sinx.Reflection.Tests.csproj", "{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +100,10 @@ Global
 		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,7 +124,7 @@ Global
 		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 	EndGlobalSection
 EndGlobal
