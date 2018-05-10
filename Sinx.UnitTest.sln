@@ -44,7 +44,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AOP.Tests", "Sinx.AOP.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Quartz.Tests", "Sinx.Quartz.Tests\Sinx.Quartz.Tests.csproj", "{01553A1D-5C8A-424F-A976-49AAD1EBDD1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Reflection.Tests", "Sinx.Reflection.Tests\Sinx.Reflection.Tests.csproj", "{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Reflection.Tests", "Sinx.Reflection.Tests\Sinx.Reflection.Tests.csproj", "{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Refactor.Tests", "Sinx.Refactor.Tests\Sinx.Refactor.Tests.csproj", "{66D8981D-7357-4B19-8B6D-22DCF35945D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,10 @@ Global
 		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEB97F93-6164-4028-B0EE-3B8FBDC2763F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D8981D-7357-4B19-8B6D-22DCF35945D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D8981D-7357-4B19-8B6D-22DCF35945D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D8981D-7357-4B19-8B6D-22DCF35945D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D8981D-7357-4B19-8B6D-22DCF35945D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,7 +130,7 @@ Global
 		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
