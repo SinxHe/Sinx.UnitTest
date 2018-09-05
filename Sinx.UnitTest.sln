@@ -47,6 +47,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Refactor.Tests", "Sinx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Algorithm", "Sinx.Algorithm\Sinx.Algorithm.csproj", "{8288EEBF-64EF-445E-8BD0-9EF06CF4F0D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Collection.Tests", "Sinx.Collection.Tests\Sinx.Collection.Tests.csproj", "{2A5C2D5D-CC58-459D-9FE4-57405B052273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Reactive.Tests", "Sinx.Reactive.Tests\Sinx.Reactive.Tests.csproj", "{1CE7898E-886D-4FE1-B8E9-C710DFA15009}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +117,14 @@ Global
 		{8288EEBF-64EF-445E-8BD0-9EF06CF4F0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8288EEBF-64EF-445E-8BD0-9EF06CF4F0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8288EEBF-64EF-445E-8BD0-9EF06CF4F0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5C2D5D-CC58-459D-9FE4-57405B052273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5C2D5D-CC58-459D-9FE4-57405B052273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5C2D5D-CC58-459D-9FE4-57405B052273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5C2D5D-CC58-459D-9FE4-57405B052273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE7898E-886D-4FE1-B8E9-C710DFA15009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE7898E-886D-4FE1-B8E9-C710DFA15009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE7898E-886D-4FE1-B8E9-C710DFA15009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE7898E-886D-4FE1-B8E9-C710DFA15009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,7 +145,7 @@ Global
 		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 	EndGlobalSection
 EndGlobal
