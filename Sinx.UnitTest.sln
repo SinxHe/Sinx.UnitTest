@@ -51,7 +51,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Collection.Tests", "Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Reactive.Tests", "Sinx.Reactive.Tests\Sinx.Reactive.Tests.csproj", "{1CE7898E-886D-4FE1-B8E9-C710DFA15009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.DependencyInjection.Tests", "Sinx.DependencyInjection.Tests\Sinx.DependencyInjection.Tests.csproj", "{84205E90-EB12-4BEA-9FFD-D4098CB6CC19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.DependencyInjection.Tests", "Sinx.DependencyInjection.Tests\Sinx.DependencyInjection.Tests.csproj", "{84205E90-EB12-4BEA-9FFD-D4098CB6CC19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.ComponentModel.Tests", "Sinx.ComponentModel.Tests\Sinx.ComponentModel.Tests.csproj", "{DFD17738-860E-4056-97D1-AB5C74921AAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +133,10 @@ Global
 		{84205E90-EB12-4BEA-9FFD-D4098CB6CC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84205E90-EB12-4BEA-9FFD-D4098CB6CC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84205E90-EB12-4BEA-9FFD-D4098CB6CC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,7 +157,7 @@ Global
 		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 	EndGlobalSection
 EndGlobal
