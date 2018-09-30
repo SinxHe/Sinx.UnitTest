@@ -15,8 +15,8 @@ namespace Sinx.ComponentModel.Tests.DataAnnotationsTests
 			var propInfo = typeof(MyPOCO)
 				.GetProperty("MyProperty");
 			var validation = propInfo
-				.GetCustomAttributes(typeof(MyValidationAttribute), true)
-				.Single() as MyValidationAttribute;
+				.GetCustomAttributes(true)
+				.Single(e => e is MyValidationAttribute) as MyValidationAttribute;
 			var propValue = propInfo.GetValue(poco);
 
 			// Act
@@ -26,17 +26,8 @@ namespace Sinx.ComponentModel.Tests.DataAnnotationsTests
 			Assert.True(isValid);
 		}
 
-		public class MyValidationAttribute : ValidationAttribute
-		{
-			public override bool IsValid(object value)
-			{
-				return value.Equals(1);
-			}
-		}
 
-		public class MyPOCO
-		{
-			[MyValidation] public int MyProperty => 1;
-		}
+
+
 	}
 }
