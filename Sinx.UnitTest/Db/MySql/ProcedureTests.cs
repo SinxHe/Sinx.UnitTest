@@ -12,7 +12,7 @@ namespace Sinx.UnitTest.Db.MySql
 {
 	public class ProcedureTests
 	{
-		private const string ConnString = "Server=neter.me;Port=3305;Database=TestDB;Uid=SinxHe;Pwd=SinxHe*#7370#;";
+		private const string ConnString = "{connection_string_place_holder}";
 		private readonly IDbConnection _db = new MySqlConnection(ConnString);
 		[Fact]
 		public async Task Procedure_Create()

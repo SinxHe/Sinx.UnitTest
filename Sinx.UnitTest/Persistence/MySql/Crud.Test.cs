@@ -12,7 +12,7 @@ namespace Sinx.UnitTest.Persistence.MySql
 {
 	public class CrudTest
 	{
-		private const string ConnString = "server=neter.me; port=3306;user id=SinxHe; password=SinxHe;database=test";
+		private const string ConnString = "{connection_string_place_holder}";
 		#region Table
 
 		//[Fact]
