@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest", "Sinx.UnitTest\Sinx.UnitTest.csproj", "{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 DotNetTest", "01 DotNetTest", "{A5298940-FBF4-4ACA-926E-C85FBEEDEA52}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.DesignPattern", "Sinx.UnitTest.DesignPattern\Sinx.UnitTest.DesignPattern.csproj", "{51C816DA-5B31-496A-AADF-523C22CF1D0B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.AspNetCore", "Sinx.UnitTest.AspNetCore\Sinx.UnitTest.AspNetCore.csproj", "{4704BA47-0948-4F09-B70B-9369A8529104}"
@@ -98,11 +96,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
-		{51C816DA-5B31-496A-AADF-523C22CF1D0B} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
-		{4704BA47-0948-4F09-B70B-9369A8529104} = {A5298940-FBF4-4ACA-926E-C85FBEEDEA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
