@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.Remoting.Contexts;
 using System.Security.Principal;
 using System.Threading;
 using Xunit;
@@ -55,7 +54,7 @@ namespace Sinx.UnitTest.System.Threading
 			// Assert.Equal(state, ThreadState.Running);	// 实时调试 - 前台线程 -> ThreadState.Running	|	调试/运行 - 后台线程 -> ThreadState.Background
 
 			ThreadPriority priority = Thread.CurrentThread.Priority;// 优先级
-			Assert.Equal(priority, ThreadPriority.Normal);          // Highest > AboveNormal > Normal > BelowNormal > Lowest
+			Assert.Equal(ThreadPriority.Normal, priority);          // Highest > AboveNormal > Normal > BelowNormal > Lowest
 
 			bool isThreadProolThread = Thread.CurrentThread.IsThreadPoolThread; // 是否是线程池线程
 			Assert.False(isThreadProolThread);
@@ -65,22 +64,7 @@ namespace Sinx.UnitTest.System.Threading
 			ExecutionContext executionContext = Thread.CurrentThread.ExecutionContext;
 			// 当前线程使用的语言文化
 			CultureInfo culture = Thread.CurrentThread.CurrentCulture;
-			Assert.Equal(culture.ToString(), "zh-CN");
-		}
-
-		[Fact]
-		public void CurrentContext_GetContextInfo()
-		{
-			var context = Thread.CurrentContext;
-
-			int contextId = context.ContextID;  // 上下文Id
-			Assert.True(contextId >= 0);
-
-			//context.SetProperty();	// 不允许向默认上下文添加属性, 此方法为支持基础结构的方法, 程序员别随便用
-			IContextProperty[] properties = context.ContextProperties;  // 从上下文收集命名信息
-
-			// message: 此上下文已经被冻结
-			Assert.Throws<InvalidOperationException>(() => context.Freeze());   // 冻结上下文, 使无法从上下文添加/移除上下文属性
+			Assert.Equal("zh-CN", culture.ToString());
 		}
 
 		[Fact]

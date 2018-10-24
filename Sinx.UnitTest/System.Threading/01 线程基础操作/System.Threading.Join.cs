@@ -20,7 +20,7 @@ namespace Sinx.UnitTest.System.Threading._01_线程基础操作
 			});
 			thread.Start();
 			thread.Join();	// 阻止调用线程直到线程终止
-			Assert.Equal(num, 1);
+			Assert.Equal(1, num);
 		}
 	}
 }

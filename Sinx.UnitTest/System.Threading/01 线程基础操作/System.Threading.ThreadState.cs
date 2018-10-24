@@ -13,15 +13,15 @@ namespace Sinx.UnitTest.System.Threading._01_线程基础操作
 		public void Thread_ThreadState()
 		{
 			var thread = new Thread(() => Thread.Sleep(TimeSpan.FromSeconds(2)));
-			Assert.Equal(thread.ThreadState, ThreadState.Unstarted);
+			Assert.Equal(ThreadState.Unstarted, thread.ThreadState);
 			thread.Start();
-			Assert.Equal(thread.ThreadState, ThreadState.Running);
+			Assert.Equal(ThreadState.Running, thread.ThreadState);
 			Thread.Sleep(TimeSpan.FromMilliseconds(500));
-			Assert.Equal(thread.ThreadState, ThreadState.WaitSleepJoin);
+			Assert.Equal(ThreadState.WaitSleepJoin, thread.ThreadState);
 			Thread.Sleep(TimeSpan.FromMilliseconds(2500));
-			Assert.Equal(thread.ThreadState, ThreadState.Stopped);
+			Assert.Equal(ThreadState.Stopped, thread.ThreadState);
 			thread.Abort();
-			Assert.Equal(thread.ThreadState, ThreadState.Aborted);
+			Assert.Equal(ThreadState.Aborted, thread.ThreadState);
 
 			//thread.Start();	// 线程正在运行或已被终止, 因此无法运行
 			thread = new Thread(() => { });

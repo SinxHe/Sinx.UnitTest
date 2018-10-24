@@ -47,9 +47,11 @@ namespace Sinx.Concurrency.Tests._03_Rx
             IObservable<int> observable0 = Observable.Range(0, 10);
             IObservable<string> observable1 = observable0.Where(i => i % 2 == 0)
                 .Select(i => i.ToString() + i.ToString());
-            // Obsolete
-            observable1.ForEach(i => Console.WriteLine($"ForEach: {i}"));
-            await observable1.ForEachAsync(i => Console.WriteLine($"ForEachAsync: {i}"));
+			// Obsolete
+#pragma warning disable CS0618 // 类型或成员已过时
+			observable1.ForEach(i => Console.WriteLine($"ForEach: {i}"));
+#pragma warning restore CS0618 // 类型或成员已过时
+			await observable1.ForEachAsync(i => Console.WriteLine($"ForEachAsync: {i}"));
         }
 
         [Fact]

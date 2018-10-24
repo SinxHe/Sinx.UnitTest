@@ -34,8 +34,8 @@ namespace Sinx.UnitTest.System.Dynamic
 		{
 			var id = ((IEnumerable<KeyValuePair<string, object>>)_d).First().Key;
 			var idValue = ((IEnumerable<KeyValuePair<string, object>>) _d).First().Value;
-			Assert.Equal(id, "Id");
-			Assert.Equal(idValue, 1);
+			Assert.Equal("Id", id);
+			Assert.Equal(1, idValue);
 		}
 
 		[Fact]
@@ -43,8 +43,8 @@ namespace Sinx.UnitTest.System.Dynamic
 		{
 			var id = ((IDictionary<string, object>)_d).First().Key;
 			var idValue = ((IDictionary<string, object>) _d).First().Value;
-			Assert.Equal(id, "Id");
-			Assert.Equal(idValue, 1);
+			Assert.Equal("Id", id);
+			Assert.Equal(1, idValue);
 		}
 	}
 }

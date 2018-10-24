@@ -20,7 +20,7 @@ namespace Sinx.UnitTest.垃圾回收
 				GC.Collect();
 			}, null, 0, 100);
 			Thread.Sleep(1000);
-			Assert.Equal(i, 1);
+			Assert.Equal(1, i);
 			// 回收开始时
 		}
 	}

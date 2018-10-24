@@ -18,7 +18,7 @@ namespace Sinx.UnitTest.Base
 			});
 			token.Cancel();
 			// 调用Cancel以后, 调用线程去执行注册的事件
-			Assert.NotEqual(threadId, 0);
+			Assert.NotEqual(0, threadId);
 			Assert.Equal(callThreadId, threadId);
 		}
 	}

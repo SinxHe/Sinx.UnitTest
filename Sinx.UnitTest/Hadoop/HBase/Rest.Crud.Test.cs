@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 using Xunit;
-
+#pragma warning disable xUnit1013 // Public method should be marked as test
 namespace Sinx.UnitTest.Hadoop.HBase
 {
 	public class Crud
@@ -30,6 +30,7 @@ namespace Sinx.UnitTest.Hadoop.HBase
 			var model = JsonConvert.DeserializeObject<Table>(content);
 		}
 
+
 		//[Fact]
 		public void Rest_Post_CreateTable()
 		{
@@ -43,7 +44,7 @@ namespace Sinx.UnitTest.Hadoop.HBase
 			request.Content.Headers.ContentType = new MediaTypeHeaderValue("text/xml");
 			var task = _client.SendAsync(request);
 			var response = task.Result;
-			Assert.Equal(response.StatusCode, HttpStatusCode.Created);
+			Assert.Equal(HttpStatusCode.Created, response.StatusCode);
 		}
 
 		//[Theory]
@@ -57,7 +58,7 @@ namespace Sinx.UnitTest.Hadoop.HBase
 			request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 			var task = _client.SendAsync(request);
 			var response = task.Result;
-			Assert.Equal(response.StatusCode, HttpStatusCode.OK);
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 		}
 
 		[Fact]
@@ -85,3 +86,4 @@ namespace Sinx.UnitTest.Hadoop.HBase
 		}
 	}
 }
+#pragma warning restore xUnit1013 // Public method should be marked as test

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 
 // ReSharper disable InconsistentNaming
 
 namespace Sinx.UnitTest.Algorithm.BigO
 {
-	internal class _01_BigO_Compute
+	public class _01_BigO_Compute
 	{
 		/// <summary>
 		/// 推断大O时间复杂度

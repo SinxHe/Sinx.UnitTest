@@ -15,7 +15,7 @@ namespace Sinx.UnitTest.System.Threading._01_线程基础操作
 			// 而这个局部变量是不存在的, 这里的局部变量和Lambda中使用的变量都是匿名类的属性
 			thread.Start();
 			thread.Join();
-			Assert.Equal(n, 2);
+			Assert.Equal(2, n);
 		}
 
 		[Fact]
@@ -27,13 +27,13 @@ namespace Sinx.UnitTest.System.Threading._01_线程基础操作
 			// 注意: 如果这里的调用改成了var thread = new Thread(() => deliverClass.PlusPlus()); 那么还是会再创建一个匿名类, 将匿名类的Lambda实现方法赋值给Thread(Action)
 			thread.Start();
 			thread.Join();
-			Assert.Equal(deliverClass.N, 2);
+			Assert.Equal(2, deliverClass.N);
 		}
 
 		[Fact]
 		public void Thread_DeliverParams_StartMethod()
 		{
-			var thread = new Thread(o => Assert.Equal(o, 1));
+			var thread = new Thread(o => Assert.Equal(1, o));
 			thread.Start(1);
 			// 取消装箱的结果是无法改变的
 			// 使用Start传值的方式对于结果的传出很麻烦

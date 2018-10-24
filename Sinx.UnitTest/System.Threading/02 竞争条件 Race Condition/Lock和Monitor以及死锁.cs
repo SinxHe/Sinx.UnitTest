@@ -24,7 +24,7 @@ namespace Sinx.UnitTest.System.Threading._02_竞争条件_Race_Condition
 			thread0.Join();
 			thread1.Join();
 			thread2.Join();
-			Assert.NotEqual(n, 0);
+			Assert.NotEqual(0, n);
 
 			n = 0;
 			var obj = new object(); // 互斥锁
@@ -37,7 +37,7 @@ namespace Sinx.UnitTest.System.Threading._02_竞争条件_Race_Condition
 			thread0.Join();
 			thread1.Join();
 			thread2.Join();
-			Assert.Equal(n, 0);
+			Assert.Equal(0, n);
 
 			void Operate()
 			{

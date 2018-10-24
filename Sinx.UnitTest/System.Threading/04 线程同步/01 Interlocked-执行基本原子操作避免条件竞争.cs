@@ -32,7 +32,7 @@ namespace Sinx.UnitTest.System.Threading._04_线程同步
 			var threads = new List<Thread> { thread1, thread2, thread3};
 			threads.ForEach(t => t.Start());
 			threads.ForEach(t => t.Join());
-			Assert.NotEqual(count, 0);
+			Assert.NotEqual(0, count);
 			// -----------------------------------
 			// 原子操作 - 线程同步 - 避免条件竞争
 			var number = 0;
@@ -52,7 +52,7 @@ namespace Sinx.UnitTest.System.Threading._04_线程同步
 			var ts = new List<Thread> { t1, t2, t3};
 			ts.ForEach(t => t.Start());
 			ts.ForEach(t => t.Join());
-			Assert.Equal(number, 0);
+			Assert.Equal(0, number);
 		}
 	}
 }

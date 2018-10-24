@@ -72,8 +72,8 @@ namespace Sinx.UnitTest.System.Dynamic
 		{
 			dynamic d = this;
 			//Assert.Equal(this.StaticMember, 1);
-			Assert.Equal(StaticMember, 1);  // 不能通过实例调用, 但是在方法中直接访问可以
-			Assert.Throws(typeof(RuntimeBinderException), () => d.StaticMember);
+			Assert.Equal(1, StaticMember);  // 不能通过实例调用, 但是在方法中直接访问可以
+			Assert.Throws<RuntimeBinderException>(() => d.StaticMember);
 		}
 
 		/// <summary>

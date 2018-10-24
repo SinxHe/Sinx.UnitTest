@@ -33,7 +33,7 @@ namespace Sinx.UnitTest.System.Linq.Expressions
 			Expression<Func<int>> funcExp = () => left + right;
 			Func<int> resultFunc = funcExp.Compile();
 			Console.WriteLine(funcExp.ToString());
-			Assert.True(Regex.IsMatch(funcExp.ToString(), @"\(\)\s*=>\s*.+?left.+?\+.+?right"));
+			Assert.Matches(@"\(\)\s*=>\s*.+?left.+?\+.+?right", funcExp.ToString());
 			Assert.Equal(resultFunc(), expect);
 		}
 
@@ -69,9 +69,9 @@ namespace Sinx.UnitTest.System.Linq.Expressions
 			Expression<Func<int, string>> toString = num => num.ToString();
 			ReadOnlyCollection<ParameterExpression>  parameters = toString.Parameters;
 			ParameterExpression firstParam = parameters.First();
-			Assert.Equal(firstParam.Name, "num");
-			Assert.Equal(firstParam.NodeType, ExpressionType.Parameter);
-			Assert.Equal(firstParam.Type, typeof(int));
+			Assert.Equal("num", firstParam.Name);
+			Assert.Equal(ExpressionType.Parameter, firstParam.NodeType);
+			Assert.Equal(typeof(int), firstParam.Type);
 		}
 
 		[Fact]

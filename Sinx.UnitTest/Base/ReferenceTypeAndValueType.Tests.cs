@@ -27,7 +27,7 @@ namespace Sinx.UnitTest.Base
 		{
 			ValueType vt = 1;
 			object o = vt;
-			Assert.Equal(o, 1);
+			Assert.Equal(1, o);
 		}
 
 		[Fact]
@@ -35,12 +35,12 @@ namespace Sinx.UnitTest.Base
 		{
 			int a = 1;
 			ValueType v = a;
-			Assert.Equal(v, 1);
+			Assert.Equal(1, v);
 			StringComparison sc = StringComparison.OrdinalIgnoreCase;
 			Enum e = sc;
-			Assert.Equal(e, StringComparison.OrdinalIgnoreCase);
+			Assert.Equal(StringComparison.OrdinalIgnoreCase, e);
 			v = sc;
-			Assert.Equal(v, StringComparison.OrdinalIgnoreCase);
+			Assert.Equal(StringComparison.OrdinalIgnoreCase, v);
 		}
 
 		[Fact]

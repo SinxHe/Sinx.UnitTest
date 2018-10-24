@@ -8,12 +8,12 @@ namespace Sinx.UnitTest.Base
 		public void PartialMethod()
 		{
 			var a = new Base{Name = "Sinx"};
-			Assert.Equal(a.Name, "SINX");
+			Assert.Equal("SINX", a.Name);
 			var b = new Derived { Name = "Sinx" };
-			Assert.Equal(b.Name, "SINXOnNameChanging");
+			Assert.Equal("SINXOnNameChanging", b.Name);
 
 			var c = new Base { Name2 = "sinX" };
-			Assert.Equal(c.Name2, "sinS");
+			Assert.Equal("sinS", c.Name2);
 		}
 
 		// use class inheritance

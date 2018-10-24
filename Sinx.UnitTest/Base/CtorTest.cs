@@ -121,7 +121,7 @@ namespace Sinx.UnitTest.Base
 		{
 			_order = "";
 			var s = new Son();
-			Assert.Equal(_order, " s_father  f  father  f_son  s  son ");
+			Assert.Equal(" s_father  f  father  f_son  s  son ", _order);
 		}
 
 		#endregion

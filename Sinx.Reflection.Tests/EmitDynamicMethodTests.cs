@@ -7,8 +7,6 @@ namespace Sinx.Reflection.Tests
 {
 	public class EmitDynamicMethodTests
 	{
-		private long test = 42;
-
 		/// <summary>
 		/// 声明用于执行方法的委托类型
 		/// </summary>

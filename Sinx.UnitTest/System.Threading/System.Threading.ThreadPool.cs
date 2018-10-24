@@ -19,7 +19,7 @@ namespace Sinx.UnitTest.System.Threading
 			// 加入线程池队列 queue v. 排列
 			ThreadPool.QueueUserWorkItem(workItem);
 			Thread.Sleep(500);
-			Assert.Equal(ar[0], 1);
+			Assert.Equal(1, ar[0]);
 		}
     }
 }

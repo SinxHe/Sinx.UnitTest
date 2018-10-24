@@ -46,14 +46,14 @@ namespace Sinx.UnitTest.Base
 			// 2. 字段在初始化线程是初始化的值, 在其他线程是默认值
 			var student = new Student();
 			Assert.True(student.ThreadLocalData == 1);
-			Assert.Equal(student.Data, 1);
+			Assert.Equal(1, student.Data);
 			Task.Run(() =>
 			{
-				Assert.Equal(student.ThreadLocalData, 0);
-				Assert.Equal(student.Data, 1);
+				Assert.Equal(0, student.ThreadLocalData);
+				Assert.Equal(1, student.Data);
 			});
 			Assert.True(student.ThreadLocalData == 1);
-			Assert.Equal(student.Data, 1);
+			Assert.Equal(1, student.Data);
 		}
 
 		[Fact]

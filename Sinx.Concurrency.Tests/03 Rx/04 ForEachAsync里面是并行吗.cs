@@ -39,7 +39,8 @@ namespace Sinx.Concurrency.Tests._03_Rx
 			    {
 				    var num = await Task.FromResult(item);
 					// 这样在observable释放以后会导致消息发送不出去, 等待ovservable也没用, 不是一个好的设计
-				    Task.Run(() =>
+				    // ReSharper disable once UnusedVariable
+				    var tt = Task.Run(() =>
 				    {
 					    o.OnNext(num);
 				    }).ContinueWith(t =>
