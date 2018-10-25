@@ -1,50 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.0</TargetFramework>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="EF\**" />
-    <EmbeddedResource Remove="EF\**" />
-    <None Remove="EF\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="EF\**" />
+		<Compile Remove="IronPythonTests\Modules\numpy\**" />
+		<EmbeddedResource Remove="EF\**" />
+		<EmbeddedResource Remove="IronPythonTests\Modules\numpy\**" />
+		<None Remove="EF\**" />
+		<None Remove="IronPythonTests\Modules\numpy\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="System.Threading\ExecutionContext.Tests.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="System.Threading\ExecutionContext.Tests.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Confluent.Kafka" Version="0.11.6" />
-    <PackageReference Include="Dapper" Version="1.50.5" />
-    <PackageReference Include="IronPython" Version="2.7.9" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-    <PackageReference Include="MySql.Data" Version="8.0.13" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
-    <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Confluent.Kafka" Version="0.11.6" />
+		<PackageReference Include="Dapper" Version="1.50.5" />
+		<PackageReference Include="IronPython" Version="2.7.9" />
+		<PackageReference Include="IronPython.StdLib" Version="2.7.9" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+		<PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+		<PackageReference Include="MySql.Data" Version="8.0.13" />
+		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+		<PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+		<PackageReference Include="xunit" Version="2.4.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="IronPythonTests\**" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="IronPythonTests\hello-world.py">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+	  <Folder Include="IronPythonTests\Modules\" />
+	</ItemGroup>
 
 </Project>
