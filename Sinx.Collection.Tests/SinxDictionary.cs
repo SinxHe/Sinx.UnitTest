@@ -20,7 +20,16 @@ namespace Sinx.Collection.Tests
 		public ICollection<TValue> Values { get; }
 		public TValue this[TKey key]
 		{
-			get => throw new System.NotImplementedException();
+			get
+			{
+				var i = FindEntry(key);
+				if (i < 0)
+				{
+					throw new KeyNotFoundException();
+				}
+
+				return _entries[i].Value;
+			}
 			set => Insert(key, value, false);
 		}
 
@@ -43,9 +52,14 @@ namespace Sinx.Collection.Tests
 
 		#region 增
 
+		public void Add(TKey key, TValue value)
+		{
+			Insert(key, value, true);
+		}
+
 		public void Add(KeyValuePair<TKey, TValue> item)
 		{
-			Insert(item.Key, item.Value, true);
+			Add(item.Key, item.Value);
 		}
 
 		#endregion
@@ -65,7 +79,33 @@ namespace Sinx.Collection.Tests
 
 		#region 查
 
+		public bool ContainsKey(TKey key)
+		{
+			return FindEntry(key) >= 0;
+		}
 
+		public bool Contains(KeyValuePair<TKey, TValue> item)
+		{
+			var index = FindEntry(item.Key);
+			if (index < 0)
+			{
+				return false;
+			}
+			var value = _entries[index].Value;
+			return EqualityComparer<TValue>.Default.Equals(item.Value, value);
+		}
+
+		public bool TryGetValue(TKey key, out TValue value)
+		{
+			var index = FindEntry(key);
+			if (index < 0)
+			{
+				value = default;
+				return false;
+			}
+			value = _entries[index].Value;
+			return true;
+		}
 
 		#endregion
 
@@ -101,6 +141,26 @@ namespace Sinx.Collection.Tests
 			_freeListCount--;
 		}
 
+		private int FindEntry(TKey key)
+		{
+			if (key?.Equals(default) ?? true)
+			{
+				throw new ArgumentException(nameof(key));
+			}
+
+			var hashCode = _comparer.GetHashCode(key);
+			var bucketIndex = hashCode % _buckets.Length;
+			for (var i = _buckets[bucketIndex]; i >= 0; i = _entries[i].Next)
+			{
+				if (_entries[i].HashCode == hashCode)
+				{
+					return i;
+				}
+			}
+
+			return -1;
+		}
+
 		#endregion
 
 
@@ -110,10 +170,7 @@ namespace Sinx.Collection.Tests
 			throw new System.NotImplementedException();
 		}
 
-		public bool Contains(KeyValuePair<TKey, TValue> item)
-		{
-			throw new System.NotImplementedException();
-		}
+
 
 		public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
 		{
@@ -125,25 +182,14 @@ namespace Sinx.Collection.Tests
 			throw new System.NotImplementedException();
 		}
 
-		public void Add(TKey key, TValue value)
-		{
-			throw new System.NotImplementedException();
-		}
 
-		public bool ContainsKey(TKey key)
-		{
-			throw new System.NotImplementedException();
-		}
 
 		public bool Remove(TKey key)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public bool TryGetValue(TKey key, out TValue value)
-		{
-			throw new System.NotImplementedException();
-		}
+
 
 		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
 		{
