@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Sinx.Collection.Tests
 {
-	public class AlgorithmDictionary<TKey, TValue>
+	public class AlgorithmHashTable<TKey, TValue>
 	{
 		private readonly Entry[] _entries;
 
-		public AlgorithmDictionary(int capacity = 3)
+		public AlgorithmHashTable(int capacity = 3)
 		{
 			_entries = new Entry[capacity];
 		}
