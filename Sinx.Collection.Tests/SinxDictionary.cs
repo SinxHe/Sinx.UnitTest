@@ -7,12 +7,14 @@ namespace Sinx.Collection.Tests
 	public class SinxDictionary<TKey, TValue> : IDictionary<TKey, TValue>
 	{
 		private int _count;
+		private int _freeList;
+		private int _freeListCount;
 		private readonly IEqualityComparer<TKey> _comparer;
-		private readonly Entry[] _entries;
+		private Entry[] _entries;
 		// 如果没有buckets, 就无法顺序的将item添加到_entries
 		// 如果不能顺序的将item添加到_entries, 插入点索引的寻找
 		// 需要扫描_entries寻找空节点, 这会导致时间复杂度变成O(n)
-		private readonly int[] _buckets; // /'bʌkɪt/ 
+		private int[] _buckets; // /'bʌkɪt/ 
 		public int Count { get; }
 		public bool IsReadOnly { get; }
 		public ICollection<TKey> Keys { get; }
@@ -64,7 +66,51 @@ namespace Sinx.Collection.Tests
 
 		#region 删
 
+		public bool Remove(KeyValuePair<TKey, TValue> item)
+		{
+			var i = FindEntry(item.Key);
+			if (i >= 0 && EqualityComparer<TValue>.Default.Equals(item.Value, _entries[i].Value))
+			{
+				return Remove(item.Key);
+			}
+			return false;
+		}
 
+		public bool Remove(TKey key)
+		{
+			var hashCode = _comparer.GetHashCode(key);
+			var bucketIndex = hashCode % _buckets.Length;
+			var last = -1;
+			for (int i = _buckets[bucketIndex]; i >= 0; last = i, i = _entries[i].Next)
+			{
+				if (hashCode == _entries[i].HashCode &&
+					_comparer.Equals(key, _entries[i].Key))
+				{
+					if (last < 0)
+					{
+						_buckets[bucketIndex] = _entries[i].Next;
+					}
+					else
+					{
+						_entries[last].Next = _entries[i].Next;
+					}
+					_entries[i].Next = _freeList;
+					_freeList = i;
+					_freeListCount++;
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public void Clear()
+		{
+			_buckets = new int[3];
+			_entries = new Entry[3];
+			_count = 0;
+			_freeList = -1;
+			_freeListCount = 0;
+		}
 
 		#endregion
 
@@ -131,12 +177,28 @@ namespace Sinx.Collection.Tests
 				}
 			}
 
-			_entries[_count].Key = key;
-			_entries[_count].Value = value;
-			_entries[_count].HashCode = hashCode;
-			_entries[_count].Next = _buckets[bucketIndex];
-			_buckets[bucketIndex] = _count;
-			_count++;
+			int index;
+			if (_freeListCount > 0)
+			{
+				index = _freeList;
+				_freeList = _entries[_freeList].Next;
+				_freeListCount--;
+			}
+			else
+			{
+				if (_count == _entries.Length)
+				{
+					throw new Exception("over flow");
+				}
+				index = _count;
+				_count++;
+			}
+
+			_entries[index].Key = key;
+			_entries[index].Value = value;
+			_entries[index].HashCode = hashCode;
+			_entries[index].Next = _buckets[bucketIndex];
+			_buckets[bucketIndex] = index;
 		}
 
 		private int FindEntry(TKey key)
@@ -163,10 +225,7 @@ namespace Sinx.Collection.Tests
 
 
 
-		public void Clear()
-		{
-			throw new System.NotImplementedException();
-		}
+
 
 
 
@@ -175,17 +234,7 @@ namespace Sinx.Collection.Tests
 			throw new System.NotImplementedException();
 		}
 
-		public bool Remove(KeyValuePair<TKey, TValue> item)
-		{
-			throw new System.NotImplementedException();
-		}
 
-
-
-		public bool Remove(TKey key)
-		{
-			throw new System.NotImplementedException();
-		}
 
 
 
