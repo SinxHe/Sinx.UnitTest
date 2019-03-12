@@ -11,7 +11,7 @@ namespace Sinx.Collection.Tests
 		private readonly Entry[] _entries;
 		// 如果没有buckets, 就无法顺序的将item添加到_entries
 		// 如果不能顺序的将item添加到_entries, 插入点索引的寻找
-		// 需要扫描_entries寻找空节点, 这会导致时间复杂度变成lg(n)
+		// 需要扫描_entries寻找空节点, 这会导致时间复杂度变成O(n)
 		private readonly int[] _buckets; // /'bʌkɪt/ 
 		public int Count { get; }
 		public bool IsReadOnly { get; }
