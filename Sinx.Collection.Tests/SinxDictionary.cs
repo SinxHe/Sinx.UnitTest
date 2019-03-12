@@ -6,12 +6,11 @@ namespace Sinx.Collection.Tests
 {
 	public class SinxDictionary<TKey, TValue> : IDictionary<TKey, TValue>
 	{
+		private int _count;
 		private readonly IEqualityComparer<TKey> _comparer;
 		private readonly Entry[] _entries;
-		private int _freeList;
-		private int _freeListCount;
 		// 如果没有buckets, 就无法顺序的将item添加到_entries
-		// 如果不能顺序的将item添加到_entries, 则freeList的寻找
+		// 如果不能顺序的将item添加到_entries, 插入点索引的寻找
 		// 需要扫描_entries寻找空节点, 这会导致时间复杂度变成lg(n)
 		private readonly int[] _buckets; // /'bʌkɪt/ 
 		public int Count { get; }
@@ -40,7 +39,6 @@ namespace Sinx.Collection.Tests
 			_comparer = comparer ?? EqualityComparer<TKey>.Default;
 			_entries = new Entry[capacity]; //  /kə'pæsəti/ 
 			_buckets = new int[capacity];
-			_freeListCount = capacity;
 			for (var i = 0; i < capacity; i++)
 			{
 				_entries[i].Next = -1;
@@ -113,10 +111,11 @@ namespace Sinx.Collection.Tests
 
 		private void Insert(TKey key, TValue value, bool isAdd)
 		{
-			if (_freeListCount <= 0)
+			if (_count == _entries.Length)
 			{
 				throw new Exception("over flow");
 			}
+
 			var hashCode = _comparer.GetHashCode(key);
 			var bucketIndex = hashCode % _buckets.Length;
 			// 进行重复检查, 如果 isAdd != true, 顺便更改值
@@ -132,13 +131,12 @@ namespace Sinx.Collection.Tests
 				}
 			}
 
-			_entries[_freeList].Key = key;
-			_entries[_freeList].Value = value;
-			_entries[_freeList].HashCode = hashCode;
-			_entries[_freeList].Next = _buckets[bucketIndex];
-			_buckets[bucketIndex] = _freeList;
-			_freeList++;
-			_freeListCount--;
+			_entries[_count].Key = key;
+			_entries[_count].Value = value;
+			_entries[_count].HashCode = hashCode;
+			_entries[_count].Next = _buckets[bucketIndex];
+			_buckets[bucketIndex] = _count;
+			_count++;
 		}
 
 		private int FindEntry(TKey key)
