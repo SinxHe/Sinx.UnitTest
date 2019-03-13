@@ -15,7 +15,7 @@ namespace Sinx.Collection.Tests
 		// 如果不能顺序的将item添加到_entries, 插入点索引的寻找
 		// 需要扫描_entries寻找空节点, 这会导致时间复杂度变成O(n)
 		private int[] _buckets; // /'bʌkɪt/ 
-		public int Count { get; }
+		public int Count => _count - _freeListCount;
 		public bool IsReadOnly { get; }
 		public ICollection<TKey> Keys { get; }
 		public ICollection<TValue> Values { get; }
@@ -116,10 +116,7 @@ namespace Sinx.Collection.Tests
 
 		#region 改
 
-
-
 		#endregion
-
 
 		#region 查
 
@@ -149,6 +146,25 @@ namespace Sinx.Collection.Tests
 			}
 			value = _entries[index].Value;
 			return true;
+		}
+
+		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+		{
+			return new Enumerator(this);
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+
+		public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
+		{
+			var enumerator = GetEnumerator();
+			while (enumerator.MoveNext())
+			{
+				array[arrayIndex++] = enumerator.Current;
+			}
 		}
 
 		#endregion
@@ -223,39 +239,52 @@ namespace Sinx.Collection.Tests
 
 		#endregion
 
-
-
-
-
-
-
-		public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
-		{
-			throw new System.NotImplementedException();
-		}
-
-
-
-
-
-		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
-
 		#region Nested Type
 
 		private struct Entry
 		{
-			public int HashCode { get; set; }
+			public int HashCode { get; set; }   // 当为空时设置为0
 			public int Next { get; set; }
 			public TKey Key { get; set; }
 			public TValue Value { get; set; }
+		}
+
+		private class Enumerator : IEnumerator<KeyValuePair<TKey, TValue>>
+		{
+			private readonly SinxDictionary<TKey, TValue> _dictionary;
+			private int _index = -1;
+			public KeyValuePair<TKey, TValue> Current { get; private set; }
+
+			object IEnumerator.Current => Current;
+
+			public Enumerator(SinxDictionary<TKey, TValue> dictionary)
+			{
+				_dictionary = dictionary;
+			}
+
+			public bool MoveNext()
+			{
+				while (_index++ < _dictionary.Count)
+				{
+					var entry = _dictionary._entries[_index];
+					if (entry.HashCode > 0)
+					{
+						Current = new KeyValuePair<TKey, TValue>(entry.Key, entry.Value);
+						return true;
+					}
+				}
+				return false;
+			}
+
+			public void Reset()
+			{
+				throw new NotImplementedException();
+			}
+
+			public void Dispose()
+			{
+				throw new NotImplementedException();
+			}
 		}
 
 		#endregion
