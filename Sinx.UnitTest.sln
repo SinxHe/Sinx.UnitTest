@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.UnitTest", "Sinx.UnitTest\Sinx.UnitTest.csproj", "{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest", "Sinx.UnitTest\Sinx.UnitTest.csproj", "{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest.DesignPattern", "Sinx.UnitTest.DesignPattern\Sinx.UnitTest.DesignPattern.csproj", "{51C816DA-5B31-496A-AADF-523C22CF1D0B}"
 EndProject
@@ -30,6 +30,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.DependencyInjection.Tests", "Sinx.DependencyInjection.Tests\Sinx.DependencyInjection.Tests.csproj", "{84205E90-EB12-4BEA-9FFD-D4098CB6CC19}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.ComponentModel.Tests", "Sinx.ComponentModel.Tests\Sinx.ComponentModel.Tests.csproj", "{DFD17738-860E-4056-97D1-AB5C74921AAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{694FAD0D-7E44-418D-93C0-B03E2E613DA0}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,7 +103,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 	EndGlobalSection
 EndGlobal

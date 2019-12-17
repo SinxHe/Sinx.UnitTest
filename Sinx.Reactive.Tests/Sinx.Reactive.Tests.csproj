@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="LINQPad" Version="5.40.0-beta" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
