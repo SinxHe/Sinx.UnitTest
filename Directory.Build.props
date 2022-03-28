@@ -1,6 +1,0 @@
-<Project>
-  <PropertyGroup>
-    <BaseIntermediateOutputPath>$(temp)\dotnet\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(temp)\dotnet\$(MSBuildProjectName)\</BaseOutputPath>
-  </PropertyGroup>
-</Project>

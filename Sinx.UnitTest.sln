@@ -36,6 +36,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.Collections", "System.Collections", "{909509ED-EB28-4862-9D3D-F1441562217C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Private.CoreLib", "Sinx.Private.CoreLib\Sinx.Private.CoreLib.csproj", "{B5CF137E-63F4-4564-B85D-217F90637EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Private.CoreLib.Tests", "Sinx.Private.CoreLib.Tests\Sinx.Private.CoreLib.Tests.csproj", "{AB03B163-CC6F-4CC9-BC24-B1D8D9E70B55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grpc", "Grpc", "{B2C574C2-FAEC-472C-9B4F-53B861EAA980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Grpc.Server", "Sinx.Grpc.Server\Sinx.Grpc.Server.csproj", "{C45DE882-2532-4B44-8CAC-1CC264F5C09E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.Grpc.Client", "Sinx.Grpc.Client\Sinx.Grpc.Client.csproj", "{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InvokeCpp", "InvokeCpp", "{F9901F3E-0FFF-41F6-B1C5-C64488C953BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sinx.InvokeCpp.Cpp", "Sinx.InvokeCpp.Cpp\Sinx.InvokeCpp.Cpp.vcxproj", "{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.InvokeCpp.CSharp", "Sinx.InvokeCpp.CSharp\Sinx.InvokeCpp.CSharp.csproj", "{944D320F-02A8-4295-9726-0A75DF63AA59}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sinx.InvokeCpp.Console", "Sinx.InvokeCpp.Console\Sinx.InvokeCpp.Console.vcxproj", "{AFB04F12-4CFD-498C-B61B-80322ED4D1E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +118,34 @@ Global
 		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFD17738-860E-4056-97D1-AB5C74921AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CF137E-63F4-4564-B85D-217F90637EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CF137E-63F4-4564-B85D-217F90637EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CF137E-63F4-4564-B85D-217F90637EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CF137E-63F4-4564-B85D-217F90637EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB03B163-CC6F-4CC9-BC24-B1D8D9E70B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB03B163-CC6F-4CC9-BC24-B1D8D9E70B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB03B163-CC6F-4CC9-BC24-B1D8D9E70B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB03B163-CC6F-4CC9-BC24-B1D8D9E70B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C45DE882-2532-4B44-8CAC-1CC264F5C09E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45DE882-2532-4B44-8CAC-1CC264F5C09E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C45DE882-2532-4B44-8CAC-1CC264F5C09E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C45DE882-2532-4B44-8CAC-1CC264F5C09E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Release|Any CPU.ActiveCfg = Release|Win32
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Release|Any CPU.Build.0 = Release|Win32
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Debug|Any CPU.Build.0 = Debug|x64
+		{944D320F-02A8-4295-9726-0A75DF63AA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944D320F-02A8-4295-9726-0A75DF63AA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944D320F-02A8-4295-9726-0A75DF63AA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944D320F-02A8-4295-9726-0A75DF63AA59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB04F12-4CFD-498C-B61B-80322ED4D1E5}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{AFB04F12-4CFD-498C-B61B-80322ED4D1E5}.Debug|Any CPU.Build.0 = Debug|Win32
+		{AFB04F12-4CFD-498C-B61B-80322ED4D1E5}.Release|Any CPU.ActiveCfg = Release|Win32
+		{AFB04F12-4CFD-498C-B61B-80322ED4D1E5}.Release|Any CPU.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,5 +153,14 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5CF137E-63F4-4564-B85D-217F90637EE0} = {909509ED-EB28-4862-9D3D-F1441562217C}
+		{AB03B163-CC6F-4CC9-BC24-B1D8D9E70B55} = {909509ED-EB28-4862-9D3D-F1441562217C}
+		{C45DE882-2532-4B44-8CAC-1CC264F5C09E} = {B2C574C2-FAEC-472C-9B4F-53B861EAA980}
+		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B} = {B2C574C2-FAEC-472C-9B4F-53B861EAA980}
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1} = {F9901F3E-0FFF-41F6-B1C5-C64488C953BA}
+		{944D320F-02A8-4295-9726-0A75DF63AA59} = {F9901F3E-0FFF-41F6-B1C5-C64488C953BA}
+		{AFB04F12-4CFD-498C-B61B-80322ED4D1E5} = {F9901F3E-0FFF-41F6-B1C5-C64488C953BA}
 	EndGlobalSection
 EndGlobal
