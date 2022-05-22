@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29609.76
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.UnitTest", "Sinx.UnitTest\Sinx.UnitTest.csproj", "{F63B08DD-D3AA-43DC-ABA9-86AC65A0C5B0}"
 EndProject
@@ -60,21 +60,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orleans", "Orleans", "{B8A0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Start", "01 Start", "{AF4DD072-CFEF-4BB0-8395-C889D73E82A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.Server", "Orleans.Server\Orleans.Server.csproj", "{AF3BF379-2560-4077-9AD0-591A4B0568C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Server", "Orleans.Server\Orleans.Server.csproj", "{AF3BF379-2560-4077-9AD0-591A4B0568C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.Client", "Orleans.Client\Orleans.Client.csproj", "{9231C11C-DA47-40AA-BC17-DB7014DD5C64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Client", "Orleans.Client\Orleans.Client.csproj", "{9231C11C-DA47-40AA-BC17-DB7014DD5C64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.Grains", "Orleans.Grains\Orleans.Grains.csproj", "{E909BF28-B49C-4CAA-9CE6-F5C93E6EB760}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Grains", "Orleans.Grains\Orleans.Grains.csproj", "{E909BF28-B49C-4CAA-9CE6-F5C93E6EB760}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 聊天室", "02 聊天室", "{545A2EB2-8A0B-4838-9FE6-5BF0B94382CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.ChatRoom.Grains.Interface", "Orleans.ChatRoom.Grains.Interface\Orleans.ChatRoom.Grains.Interface.csproj", "{84571D6E-F63D-46B7-827E-99B6625A6210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.ChatRoom.Grains.Interface", "Orleans.ChatRoom.Grains.Interface\Orleans.ChatRoom.Grains.Interface.csproj", "{84571D6E-F63D-46B7-827E-99B6625A6210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.ChatRoom.Grains", "Orleans.ChatRoom.Grains\Orleans.ChatRoom.Grains.csproj", "{EA144B35-296E-47A6-8B22-BFF4B95141B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.ChatRoom.Grains", "Orleans.ChatRoom.Grains\Orleans.ChatRoom.Grains.csproj", "{EA144B35-296E-47A6-8B22-BFF4B95141B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.ChatRoom.Server", "Orleans.ChatRoom.Server\Orleans.ChatRoom.Server.csproj", "{C51A564C-385A-45F9-87AF-627F7952B013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.ChatRoom.Server", "Orleans.ChatRoom.Server\Orleans.ChatRoom.Server.csproj", "{C51A564C-385A-45F9-87AF-627F7952B013}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.ChatRoom.Client", "Orleans.ChatRoom.Client\Orleans.ChatRoom.Client.csproj", "{8371CCB0-B602-44BD-B879-9A5E852FF352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.ChatRoom.Client", "Orleans.ChatRoom.Client\Orleans.ChatRoom.Client.csproj", "{8371CCB0-B602-44BD-B879-9A5E852FF352}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Sinx.Manim.Tests", "Sinx.Manim.Tests\Sinx.Manim.Tests.pyproj", "{28BD2D88-2EB0-4496-B1BC-543CEFB714C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -154,10 +156,10 @@ Global
 		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0433C08E-2ABD-4DF5-9F98-2EF78D55092B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Release|Any CPU.ActiveCfg = Release|Win32
-		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Release|Any CPU.Build.0 = Release|Win32
 		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Debug|Any CPU.Build.0 = Debug|x64
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Release|Any CPU.ActiveCfg = Release|Win32
+		{2F5B867E-F413-42C3-949C-3D0BC5FE21F1}.Release|Any CPU.Build.0 = Release|Win32
 		{944D320F-02A8-4295-9726-0A75DF63AA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{944D320F-02A8-4295-9726-0A75DF63AA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{944D320F-02A8-4295-9726-0A75DF63AA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -194,13 +196,11 @@ Global
 		{8371CCB0-B602-44BD-B879-9A5E852FF352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8371CCB0-B602-44BD-B879-9A5E852FF352}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8371CCB0-B602-44BD-B879-9A5E852FF352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28BD2D88-2EB0-4496-B1BC-543CEFB714C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28BD2D88-2EB0-4496-B1BC-543CEFB714C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
-		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B5CF137E-63F4-4564-B85D-217F90637EE0} = {909509ED-EB28-4862-9D3D-F1441562217C}
@@ -219,5 +219,9 @@ Global
 		{EA144B35-296E-47A6-8B22-BFF4B95141B6} = {545A2EB2-8A0B-4838-9FE6-5BF0B94382CE}
 		{C51A564C-385A-45F9-87AF-627F7952B013} = {545A2EB2-8A0B-4838-9FE6-5BF0B94382CE}
 		{8371CCB0-B602-44BD-B879-9A5E852FF352} = {545A2EB2-8A0B-4838-9FE6-5BF0B94382CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F9CD0A2-1C53-4A0E-9F9A-D139BD4716D4}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
 	EndGlobalSection
 EndGlobal
