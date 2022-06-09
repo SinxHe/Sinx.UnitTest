@@ -23,6 +23,11 @@ static async Task<IHost> StartSiloAsync()
 	var builder = new HostBuilder()
 		.UseOrleans(c =>
 		{
+			// ClusterOptions - ClusterId: 集群唯一Id, 集群内的Clients和Silos可以直接进行交流
+			//					ServiceId: 应用唯一Id, 在不同的部署中应该保持一致, Providers会使用它, 比如持久化Provider, RedisKey前缀 
+			
+			// siloPort, silo-to-silo 端口, gatewayPort, client-to-silo 端口
+			// .ConfigureEndpoints(siloPort: 11111, gatewayPort: 30000)
 			c.UseLocalhostClustering()
 				.ConfigureLogging(logging => logging.AddConsole());
 			c.AddAdoNetGrainStorage("sqlite", options =>

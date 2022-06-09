@@ -7,6 +7,8 @@ public class UserGrain : Grain, IUserGrain
 
 	private readonly IPersistentState<UserState> _userState;
 	public UserGrain(
+		// grain state is not loaded at the time it is injected into constructor, 
+		// so accessing it is invalid at that time, the state will be loaded before `OnActiveAsync` is called.
 		[PersistentState("UserState", "sqlite")] IPersistentState<UserState> userState)
 	{
 		// 注入的时候并没有读取, 在OnActivateAsync调用前保证是读取了的
