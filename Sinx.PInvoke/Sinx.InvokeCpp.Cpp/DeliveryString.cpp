@@ -5,6 +5,8 @@
 
 #include "Interface.h"
 #include <memory>
+#include <vcruntime_string.h>
+
 #include "fmt/format.h"
 using namespace std;
 
