@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
-using Orleans.Grains.Interface;
+using Orleans.Grains;
 using Orleans.Runtime;
 
-namespace Orleans.Grains
+namespace Orleans.Server
 {
 	public class HelloGrain : Grain, IHello
 	{

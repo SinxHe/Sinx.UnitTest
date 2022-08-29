@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <!-- 在publish的时候使用AOT -->
+        <PublishAot>true</PublishAot>
+        <!-- 在linux环境下, 将调试信息与二进制执行文件分离, 放到单独的.dbg文件中 -->
+        <!-- 在windows环境下, 默认的行为就是分离到.pdb文件中 -->
+        <StripSymbols>true</StripSymbols>
+    </PropertyGroup>
+
+</Project>
