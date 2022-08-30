@@ -1,0 +1,77 @@
+﻿@using Blazor.Extensions
+@using System.Numerics
+@using Blazor.Extensions.Canvas.Canvas2D
+<BECanvas Width="@Width" Height="@Height" @ref="@_canvasRef"></BECanvas>
+
+@code {
+	private BECanvas? _canvasRef;
+	private Canvas2DContext? _ctx;
+	private Vector2 Origin => new (Width / 2f, Height / 2f);
+	public Canvas2DContext Context => _ctx ?? throw new("_ctx is null");
+	[Parameter]
+	public int Width { get; set; } = 400;
+	[Parameter]
+	public int Height { get; set; } = 400;
+	public List<Func<Coordinate2, Task>> OnRenderActions { get; } = new();
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		_ctx = await _canvasRef.CreateCanvas2DAsync();
+		await _ctx.ClearRectAsync(0, 0, Width, Height);
+		await _ctx.SetStrokeStyleAsync("gray");
+		await _ctx.BeginPathAsync();
+		await _ctx.SetLineDashAsync(new float[]
+		{
+			4, 2
+		});
+		
+		for (var x = 0; x < Width; x += 10)
+		{
+			await _ctx.MoveToAsync(x, 0);
+			await _ctx.LineToAsync(x, Height);
+		}
+		for (var y = 0; y < Height; y += 10)
+		{
+			await _ctx.MoveToAsync(0, y);
+			await _ctx.LineToAsync(Width, y);
+		}
+		await _ctx.StrokeAsync();
+		await _ctx.SetStrokeStyleAsync("red");
+		await _ctx.BeginPathAsync();
+		await _ctx.MoveToAsync(Origin.X, 0);
+		await _ctx.LineToAsync(Origin.X, Height);
+		await _ctx.MoveToAsync(0, Origin.Y);
+		await _ctx.LineToAsync(Width, Origin.Y);
+		await _ctx.StrokeAsync();
+		await _ctx.SetFillStyleAsync("red");
+		await _ctx.ArcAsync(Origin.X, Origin.Y, 5, 0, 360);
+		await _ctx.FillAsync();
+		foreach (var action in OnRenderActions)
+		{
+			await action(this);
+		}
+	}
+
+	public async Task AddLineAsync(Vector2 start, Vector2 end)
+	{
+		while (_ctx == null)
+		{
+			await Task.Delay(10);
+		}
+		await _ctx.SetStrokeStyleAsync("black");
+		await _ctx.BeginPathAsync();
+		var v = GetVector(start);
+		await _ctx.MoveToAsync(v.X, v.Y);
+		v = GetVector(end);
+		await _ctx.LineToAsync(v.X, v.Y);
+		await _ctx.StrokeAsync();
+	}
+
+	public Vector2 GetVector(Vector2 v)
+	{
+	// 进行[1,0|0,-1]的线性变换
+		v = v with{Y = -v.Y};
+		v = new(Width / 2f + v.X, Height / 2f + v.Y);
+		return v;
+	}
+}

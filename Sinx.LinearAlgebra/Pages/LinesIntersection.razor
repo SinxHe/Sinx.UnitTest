@@ -1,0 +1,52 @@
+﻿@page "/LinesIntersection"
+@using System.Numerics
+<h1>@(GetIntersection(_vectors[0], _vectors[1], _vectors[2], _vectors[3])?.ToString() ?? "NotInsect")</h1>
+<Coordinate2 @ref="@_coordinate"></Coordinate2>
+
+@code {
+#pragma warning disable CS8618
+	private Coordinate2 _coordinate;
+#pragma warning restore CS8618
+	private readonly Vector2[] _vectors = 
+	{
+		new(0, 0), new(100, 100), new(40, 30), new(20, 50)
+	};
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		_coordinate.OnRenderActions.Clear();
+		_coordinate.OnRenderActions.Add(async e =>
+		{
+			await e.AddLineAsync(_vectors[0], _vectors[1]);
+			await e.AddLineAsync(_vectors[2], _vectors[3]);
+			var intersection = GetIntersection(_vectors[0], _vectors[1], _vectors[2], _vectors[3]);
+			if (intersection.HasValue)
+			{
+				var v = e.GetVector(intersection.Value);
+				await e.Context.SetFillStyleAsync("green");
+				await e.Context.MoveToAsync(v.X, v.Y);
+				await e.Context.ArcAsync(v.X, v.Y, 5, 0, 360);
+				await e.Context.FillAsync();
+			}
+		});
+		await Task.CompletedTask;
+	}
+
+	private Vector2? GetIntersection(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2)
+	{
+		var c0 = Vector3.Cross((b1 - a1).ToVector3() , (b2 - a1).ToVector3());
+		var c1 = Vector3.Cross((b2 - a2).ToVector3() , (b1 - a2).ToVector3());
+		var isInsect = c0.Z > 0 && c1.Z > 0 || (c0.Z < 0 && c1.Z < 0);
+		if (!isInsect)
+		{
+			return null;
+		}
+		var lineA1B2 = b2 - a1;
+		var lineA1A2 = a2 - a1;
+		var lineA1B1 = b1 - a1;
+		var d1 = Math.Abs(Vector3.Cross(lineA1B2.ToVector3(), lineA1A2.ToVector3()).Length() / lineA1A2.Length());
+		var d2 = Math.Abs(Vector3.Cross(lineA1B1.ToVector3(), lineA1A2.ToVector3()).Length() / lineA1A2.Length());
+		var x = d1 / (d1 + d2) * (b2 - b1).X;
+		var y = d1 / (d1 + d2) * (b2 - b1).Y;
+		return new Vector2(b2.X - x, b2.Y - y);
+	}
+}
