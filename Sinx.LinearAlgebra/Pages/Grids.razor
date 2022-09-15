@@ -1,0 +1,51 @@
+﻿@page "/Grids"
+@using SkiaSharp.Views.Blazor
+@using SkiaSharp
+
+<SKCanvasView OnPaintSurface="PaintSurface" @ref="@_view" style="width:480px; height:240px" />
+
+@code {
+	private SKCanvasView _view;
+
+	protected override Task OnInitializedAsync()
+	{
+		return base.OnInitializedAsync();
+	}
+
+	void PaintSurface(SKPaintSurfaceEventArgs e)
+	{
+		var canvas = e.Surface.Canvas;
+		canvas.Clear(SKColors.LightGray);
+
+	// Draw outline
+		var outlinePaint = new SKPaint { Color = SKColors.White, StrokeWidth = 2, };
+		canvas.DrawRoundRect(5, 5, 410, 410, 5, 5, outlinePaint);
+
+	// Draw axes
+		var axisPaint = new SKPaint { Color = SKColors.DarkGray, StrokeWidth = 5, };
+		canvas.DrawLine(20, 20, 20, 410, axisPaint);
+		canvas.DrawLine(10, 400, 400, 400, axisPaint);
+
+	// Draw graph
+		var yValues = new[] { 10, 100, 160, 120, 180, 350 };
+		var graphLinePaint = new SKPaint { Color = SKColors.DarkBlue, StrokeWidth = 4, };
+		var graphPointPaint = new SKPaint { Color = SKColors.LightBlue, StrokeWidth = 4, };
+
+		for (int i = 0; i < yValues.Length; i++)
+		{
+			var fromPoint = new SKPoint(i * 70 + 20, 400 - yValues[i]);
+			if (i != yValues.Length - 1)
+			{
+				var toPoint = new SKPoint((i + 1) * 70 + 20, 400 - yValues[i + 1]);
+				canvas.DrawLine(fromPoint, toPoint, graphLinePaint);
+			}
+			canvas.DrawCircle(fromPoint, radius: 8, graphPointPaint);
+		}
+
+	// Draw face
+		var facePaint = new SKPaint { Color = SKColors.Yellow, StrokeWidth = 3, };
+		canvas.DrawArc(new SKRect(50, 450, 450, 900), startAngle: 30, sweepAngle: 120, useCenter: false, facePaint);
+		canvas.DrawCircle(125, 600, 30, facePaint);
+		canvas.DrawCircle(375, 600, 30, facePaint);
+	}
+}
