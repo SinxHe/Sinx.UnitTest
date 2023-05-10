@@ -1,14 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Sinx.UnitTest.AspNetCore._01_ÒÀÀµ×¢Èë
+namespace Sinx.UnitTest.AspNetCore._01_ä¾èµ–æ³¨å…¥
 {
     public class ServiceCollectionTest
     {
         [Fact]
         public void ServiceCollection_ConstructServiceProvider()
         {
-			// ServiceDescriptor ¼¯ºÏ
+			// ServiceDescriptor é›†åˆ
 	        var collection = new ServiceCollection();
 	        Assert.Empty(collection);
 			var provider = collection.BuildServiceProvider();

@@ -32,9 +32,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.ComponentModel.Tests", "Sinx.ComponentModel.Tests\Sinx.ComponentModel.Tests.csproj", "{DFD17738-860E-4056-97D1-AB5C74921AAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{694FAD0D-7E44-418D-93C0-B03E2E613DA0}"
-	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.Collections", "System.Collections", "{909509ED-EB28-4862-9D3D-F1441562217C}"
 EndProject

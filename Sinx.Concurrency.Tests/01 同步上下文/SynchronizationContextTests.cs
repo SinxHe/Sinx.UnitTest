@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Sinx.Concurrency.Tests._01_Í¬²½ÉÏÏÂÎÄ
+namespace Sinx.Concurrency.Tests._01_åŒæ­¥ä¸Šä¸‹æ–‡
 {
     public class SynchronizationContextTests
     {
@@ -29,24 +29,24 @@ namespace Sinx.Concurrency.Tests._01_Í¬²½ÉÏÏÂÎÄ
 
 	        Task.Run(() =>
 	        {
-				// Õâ¸öÀïÃæÊ¹ÓÃÏß³Ì³ØÏß³Ì½øĞĞµÄ´¦Àí
+				// è¿™ä¸ªé‡Œé¢ä½¿ç”¨çº¿ç¨‹æ± çº¿ç¨‹è¿›è¡Œçš„å¤„ç†
 		        context = SynchronizationContext.Current;
 		        scheduler = TaskScheduler.Current;
 	        }).Wait();
-			// ÓÉÓÚÉÏÃæÊÇWaitµÈ´ı, ËùÒÔÕâÀïÒ»¶¨ÊÇÊ¹ÓÃµÄµ÷ÓÃÏß³Ì½øĞĞµÄÖ´ĞĞ
+			// ç”±äºä¸Šé¢æ˜¯Waitç­‰å¾…, æ‰€ä»¥è¿™é‡Œä¸€å®šæ˜¯ä½¿ç”¨çš„è°ƒç”¨çº¿ç¨‹è¿›è¡Œçš„æ‰§è¡Œ
 	        Assert.NotNull(SynchronizationContext.Current);
 	        Assert.Null(context);
 	        Assert.NotNull(scheduler);
 
 	        await Task.Run(() =>
 	        {
-				// NOTICE: ÕâÀïÊ¹ÓÃµÄÊÇÏß³Ì³ØÏß³Ì½øĞĞµÄÖ´ĞĞ
+				// NOTICE: è¿™é‡Œä½¿ç”¨çš„æ˜¯çº¿ç¨‹æ± çº¿ç¨‹è¿›è¡Œçš„æ‰§è¡Œ
 				context = SynchronizationContext.Current;
 				scheduler = TaskScheduler.Current;
 	        });
-			// NOTICE: ËäÈ»ÉÏÃæ½øĞĞÁËawaitµÈ´ı, µ«ÊÇÒì²½»áÔÚ[await]µÈ´ı
-			// NOTICE: ÒÔºó²¶×½ÉÏÏÂÎÄ, ±£Ö¤ÏÂÃæµÄÍ¬²½¿éÊ¹ÓÃµÄÊÇµ÷ÓÃÏß³Ì½øĞĞµÄÖ´ĞĞ
-			// NOTICE: ¾ÍºÃÏñÊÇÊ¹ÓÃÁË[.Wait()]µÈ´ıÒ»Ñù
+			// NOTICE: è™½ç„¶ä¸Šé¢è¿›è¡Œäº†awaitç­‰å¾…, ä½†æ˜¯å¼‚æ­¥ä¼šåœ¨[await]ç­‰å¾…
+			// NOTICE: ä»¥åæ•æ‰ä¸Šä¸‹æ–‡, ä¿è¯ä¸‹é¢çš„åŒæ­¥å—ä½¿ç”¨çš„æ˜¯è°ƒç”¨çº¿ç¨‹è¿›è¡Œçš„æ‰§è¡Œ
+			// NOTICE: å°±å¥½åƒæ˜¯ä½¿ç”¨äº†[.Wait()]ç­‰å¾…ä¸€æ ·
 	        Assert.NotNull(SynchronizationContext.Current);
 	        Assert.Null(context);
 	        Assert.NotNull(scheduler);
@@ -78,7 +78,7 @@ namespace Sinx.Concurrency.Tests._01_Í¬²½ÉÏÏÂÎÄ
 			    var id2 = Thread.CurrentThread.ManagedThreadId;
 			    Console.WriteLine($"The Action Delivery To [Post] Method Invoke Thread Id: {id2}");
 		    }, null);
-			// µÈ´ıPostÍê³É
+			// ç­‰å¾…Postå®Œæˆ
 		    Thread.Sleep(1000);
 	    }
     }
